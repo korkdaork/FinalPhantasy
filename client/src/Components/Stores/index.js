@@ -4,6 +4,13 @@ import CardGroup from 'react-bootstrap/CardGroup';
 import Button from 'react-bootstrap/Button';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import ListGroup from 'react-bootstrap/ListGroup';
+import axe from "../../Assets/axe.png";
+import sword from "../../Assets/sword.png";
+import hammer from "../../Assets/hammer.png";
+import potion from "../../Assets/potion.png";
+import light from "../../Assets/lightarmor.png";
+import heavy from "../../Assets/heavyarmor.png";
+
 import "./style.css";
 
 function Stores() {
@@ -13,12 +20,12 @@ function Stores() {
         <h1>Welcome to the Shop</h1>
         <p>
           Please purchase what type of weapon, armor and potions you need for battle.
-          Whatever you choose, your defeat inevitible!
+          Whatever you choose, your defeat is inevitible!
   </p>
       </Jumbotron>
       <CardGroup>
         <Card>
-          <Card.Img variant="top" src="/Assets/axe.png" />
+          <Card.Img variant="top" src={sword} />
           <Card.Body>
             <Card.Title>Sword</Card.Title>
             <Card.Text>
@@ -35,7 +42,7 @@ function Stores() {
           </Card.Footer>
         </Card>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Img variant="top" src={axe} />
           <Card.Body>
             <Card.Title>Axe</Card.Title>
             <Card.Text>
@@ -52,7 +59,7 @@ function Stores() {
           </Card.Footer>
         </Card>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Img variant="top" src={hammer}/>
           <Card.Body>
             <Card.Title>Mace</Card.Title>
             <Card.Text>
@@ -68,7 +75,7 @@ function Stores() {
             <Button variant="primary">Buy</Button>{' '}</Card.Footer>
         </Card>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Img variant="top" src={potion} />
           <Card.Body>
             <Card.Title>Potion</Card.Title>
             <Card.Text>
@@ -82,7 +89,7 @@ function Stores() {
             <Button variant="primary">Buy</Button>{' '}</Card.Footer>
         </Card>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Img variant="top" src={light} />
           <Card.Body>
             <Card.Title>Light Armor</Card.Title>
             <Card.Text>
@@ -99,7 +106,7 @@ function Stores() {
             <Button variant="primary">Buy</Button>{' '}</Card.Footer>
         </Card>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px160" />
+          <Card.Img variant="top" src={heavy}/>
           <Card.Body>
             <Card.Title>Heavy Armor</Card.Title>
             <Card.Text>
