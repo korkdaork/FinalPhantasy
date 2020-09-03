@@ -6,8 +6,10 @@ import Signup from "./Pages/Signup";
 import Main from "./Pages/Main";
 import Store from "./Pages/Store";
 import Stage1 from "./Pages/Stage1";
-import Boss from "./Pages/Boss"
-import Login from "./Pages/Login"
+import Boss from "./Pages/Boss";
+import Login from "./Pages/Login";
+import Defeat from "./Pages/Defeat";
+import Victory from "./Pages/Victory";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route exact path = "/Store" component = {Store}/>
         <Route exact path = "/Stage1" component = {Stage1}/>
         <Route exact path = "/Boss" component = {Boss}/>
+        <Route exact path = "/Defeat" component = {Defeat}/>
+        <Route exact path = "/Victory" component = {Victory}/>
       </Switch>
     </Router>
   );

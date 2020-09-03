@@ -14,7 +14,7 @@ function Logins() {
           Please login below to continue your journey, if you are not a member please 
           signup to get started.
         </p>
-        <Button href="#">Sign up!</Button>
+        <Button href="/signup">Sign up!</Button>
       </Jumbotron>
         <Form>
             <Form.Group controlId="formBasicEmail">
@@ -28,7 +28,7 @@ function Logins() {
                 <Form.Control type="password" placeholder="Password" />
             </Form.Group>
            
-            <Button href="#">Login</Button>
+            <Button href="/main">Login</Button>
         </Form>
       </div>
     );
