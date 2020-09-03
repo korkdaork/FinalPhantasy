@@ -9,9 +9,9 @@ function Stage1() {
                     <div className="card-body whiteFont mediumFont">
                         <img src="assets/knight.gif" className="card-img-top" alt="knight" />
                         <h5 className="card-title">FIGHT!!!</h5>
-                        <p className="card-text ">
+                        {/* <p className="card-text ">
                             A {monster.name} is in front of you, what will you do?
-                        </p>
+                        </p> */}
 
 
                         <ul className="list-group list-group-flush"></ul>
@@ -27,7 +27,7 @@ function Stage1() {
 
 
 
-                        Hit Points(HP): {stats.hp}
+                        {/* Hit Points(HP): {stats.hp}
                         <br></br>
                         Attack Power: {stats.attack}
                         <br></br>
@@ -37,7 +37,7 @@ function Stage1() {
                         <br></br>
                         Potions: {stats.potion}
                         <br></br>
-                        Gil: {stats.gil}
+                        Gil: {stats.gil} */}
                     </div>
                 </div>
 
@@ -46,9 +46,9 @@ function Stage1() {
                         <div className="card-body">
                             <h5 className="card-title whiteFont mediumFont"> Combat Log </h5>
                             <p className="card-text combat-log">
-                                <p className="card-text whiteFont mediumFont">
+                                {/* <p className="card-text whiteFont mediumFont">
                                     A {monster.name} is in front of you, what will you do?
-                        </p>
+                        </p> */}
                             </p>
                         </div>
                     </div>
@@ -61,7 +61,7 @@ function Stage1() {
                             <img id="monster" src="{{monster.src}}" className="card-img-top" alt="monster" />
                             <h5 className="card-title">FIGHT!!!</h5>
                             <p className="card-text">
-                                <h5> {monster.quote} </h5>
+                                {/* <h5> {monster.quote} </h5> */}
                             </p>
 
 
@@ -78,11 +78,11 @@ function Stage1() {
 
 
 
-                            Hit Points(HP): {monster.hp}
+                            {/* Hit Points(HP): {monster.hp}
                             <br></br>
                             Attack Power: {monster.attack}
                             <br></br>
-                            Defense: {monster.defense}
+                            Defense: {monster.defense} */}
                         </div>
                     </div>
                 </div>
