@@ -21,7 +21,7 @@ function Stores() {
         <p>
           Please purchase what type of weapon, armor and potions you need for battle.
           Whatever you choose, your defeat is inevitible!
-  </p>
+        </p>
       </Jumbotron>
       <CardGroup>
         <Card>

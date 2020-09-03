@@ -7,13 +7,15 @@ import Main from "./Pages/Main";
 import Store from "./Pages/Store";
 import Stage1 from "./Pages/Stage1";
 import Boss from "./Pages/Boss"
+import Login from "./Pages/Login"
 
 function App() {
   return (
     <Router>
       <Navbar/>
       <Switch>
-        <Route exact path = "/" component = {Signup}/>
+        <Route exact path = "/" component = {Login}/>
+        <Route exact path = "/Login" component = {Login}/>
         <Route exact path = "/Signup" component = {Signup}/>
         <Route exact path = "/Main" component = {Main}/>
         <Route exact path = "/Store" component = {Store}/>
