@@ -20,7 +20,11 @@ function Stores() {
         <h1>Welcome to the Shop</h1>
         <p>
           Please purchase what type of weapon, armor and potions you need for battle.
-          Whatever you choose, your defeat is inevitible!
+          Whatever you choose, your defeat is inevitible! When you have purchased 
+          everything you need, please click below to proceed to your first fight!.
+        </p>
+        <p>
+           <Button href="/stage1">Continue Adventure</Button>
         </p>
       </Jumbotron>
       <CardGroup>
