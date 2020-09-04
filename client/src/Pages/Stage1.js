@@ -9,6 +9,7 @@ function Stage1() {
                     <div className="card-body whiteFont mediumFont">
                         <img src="assets/knight.gif" className="card-img-top" alt="knight" />
                         <h5 className="card-title">FIGHT!!!</h5>
+
                         <p className="card-text ">
                             {/* A {monster.name} is in front of you, what will you do? */}
                         </p>
@@ -46,6 +47,7 @@ function Stage1() {
                         <div className="card-body">
                             <h5 className="card-title whiteFont mediumFont"> Combat Log </h5>
                             <p className="card-text combat-log">
+
                                 <p className="card-text whiteFont mediumFont">
                                     {/* A {monster.name} is in front of you, what will you do? */}
                                 </p>
