@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Button from 'react-bootstrap/Button';
@@ -10,10 +10,12 @@ import hammer from "../../Assets/hammer.png";
 import potion from "../../Assets/potion.png";
 import light from "../../Assets/lightarmor.png";
 import heavy from "../../Assets/heavyarmor.png";
+import DeveloperContext from "../../Utils/DeveloperContext";
 
 import "./style.css";
 
 function Stores() {
+  const {gil, hp, attack, defense, speed, potion}=useContext(DeveloperContext);
   return (
     <div>
       <Jumbotron>
@@ -26,6 +28,7 @@ function Stores() {
         <p>
            <Button href="/stage1">Continue Adventure</Button>
         </p>
+        <p>Gil: {gil}</p>
       </Jumbotron>
       <CardGroup>
         <Card>

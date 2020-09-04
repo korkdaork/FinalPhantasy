@@ -12,7 +12,7 @@ function Mains() {
                 Here you will battle foes found in that popular series and a boss so heinous,
                 his name can not be spoken!  Are you ready for battle? If so click the button below to
                 proceed to the store where you can buy equipment and items to aid you on your journey.
-  </p>
+            </p>
             <p>
                 <Button href="/store">Begin Adventure</Button>
             </p>
