@@ -4,9 +4,12 @@ import CardGroup from 'react-bootstrap/CardGroup';
 import Button from 'react-bootstrap/Button';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import ListGroupItem from "react-bootstrap/ListGroupItem"
 import "./style.css";
 
-function Stage1() {
+function Stage1Cards() {
     return (
         <Container fluid="md">
             <Jumbotron>
@@ -17,7 +20,7 @@ function Stage1() {
             </Jumbotron>
             <Col xs={6} className="justify-content-left">
                 <CardGroup>
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '18rem' }} className="player">
                         <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
                         <Card.Body>
                             <Card.Title>Card Title</Card.Title>
@@ -26,10 +29,16 @@ function Stage1() {
                                 the card's content.
                              </Card.Text>
                         </Card.Body>
+                        <ListGroup className="list-group-flush stats">
+                            <ListGroupItem>Attack: </ListGroupItem>
+                            <ListGroupItem>Defense: </ListGroupItem>
+                            <ListGroupItem>Speed: </ListGroupItem>
+                        </ListGroup>
                         <ListGroup className="list-group-flush">
-                            <ListGroupItem>Cras justo odio</ListGroupItem>
-                            <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-                            <ListGroupItem>Vestibulum at eros</ListGroupItem>
+                            <ListGroupItem><Button variant="danger">Attack</Button></ListGroupItem>
+                            <ListGroupItem><Button variant="warning">Guard</Button></ListGroupItem>
+                            <ListGroupItem><Button variant="success">Potion</Button></ListGroupItem>
+                            <ListGroupItem><Button variant="info">Run!</Button></ListGroupItem>
                         </ListGroup>
                         <Card.Body>
                             <Card.Link href="#">Card Link</Card.Link>
@@ -40,7 +49,7 @@ function Stage1() {
             </Col>
             <Col xs={6} className="justify-content-right">
                 <CardGroup>
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{ width: '18rem' }} className="enemy">
                         <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
                         <Card.Body>
                             <Card.Title>Card Title</Card.Title>
@@ -49,10 +58,10 @@ function Stage1() {
                                 the card's content.
                             </Card.Text>
                         </Card.Body>
-                        <ListGroup className="list-group-flush">
-                            <ListGroupItem>Cras justo odio</ListGroupItem>
-                            <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-                            <ListGroupItem>Vestibulum at eros</ListGroupItem>
+                        <ListGroup className="list-group-flush stats">
+                            <ListGroupItem>Attack: </ListGroupItem>
+                            <ListGroupItem>Defense: </ListGroupItem>
+                            <ListGroupItem>Speed: </ListGroupItem>
                         </ListGroup>
                         <Card.Body>
                             <Card.Link href="#">Card Link</Card.Link>
@@ -65,4 +74,4 @@ function Stage1() {
     );
 }
 
-export default Stage1;
+export default Stage1Cards;
