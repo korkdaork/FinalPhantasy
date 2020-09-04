@@ -77,8 +77,8 @@ function Stage1() {
                             <br />
 
 
-                            {/* 
-                            Hit Points(HP): {monster.hp}
+
+                            {/* Hit Points(HP): {monster.hp}
                             <br></br>
                             Attack Power: {monster.attack}
                             <br></br>
