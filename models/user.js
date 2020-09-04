@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema("User", {
+const userSchema = new Schema({
     // The email cannot be null, and must be a proper email before creation
     email: {
         type: DataTypes.STRING,
@@ -36,6 +36,7 @@ User.associate = function (models) {
         onDelete: "cascade"
     })
 }
+
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
