@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css";
 
+
 function Navbar(props) {
     const links = ["Login", "Main Page", "Store", "Stage1", "Boss", "Defeat", "Victory"];
     const navLinks = links.map(link => {
