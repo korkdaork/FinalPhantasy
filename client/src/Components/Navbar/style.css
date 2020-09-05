@@ -4,7 +4,7 @@ nav {
       rgba(63, 25, 25, 0.9)
     ),
     url(../../Assets/FinalPhantasy.png);
-  color: blue;
+  color: antiquewhite;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -12,6 +12,7 @@ nav {
 a {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: antiquewhite;
 }
 
 li {

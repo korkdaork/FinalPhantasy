@@ -11,7 +11,7 @@ import "./style.css";
 
 function Stage1Cards() {
     return (
-        <Container fluid="md">
+        <Container fluid>
             <Jumbotron>
                 <h1>Your adventure leads you to Stage One!</h1>
                 <p>
@@ -40,10 +40,10 @@ function Stage1Cards() {
                             <ListGroupItem><Button variant="success">Potion</Button></ListGroupItem>
                             <ListGroupItem><Button variant="info">Run!</Button></ListGroupItem>
                         </ListGroup>
-                        <Card.Body>
+                        {/* <Card.Body>
                             <Card.Link href="#">Card Link</Card.Link>
                             <Card.Link href="#">Another Link</Card.Link>
-                        </Card.Body>
+                        </Card.Body> */}
                     </Card>
                 </CardGroup>
             </Col>
@@ -63,10 +63,10 @@ function Stage1Cards() {
                             <ListGroupItem>Defense: </ListGroupItem>
                             <ListGroupItem>Speed: </ListGroupItem>
                         </ListGroup>
-                        <Card.Body>
+                        {/* <Card.Body>
                             <Card.Link href="#">Card Link</Card.Link>
                             <Card.Link href="#">Another Link</Card.Link>
-                        </Card.Body>
+                        </Card.Body> */}
                     </Card>
                 </CardGroup>
             </Col>
