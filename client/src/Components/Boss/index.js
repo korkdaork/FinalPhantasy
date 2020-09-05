@@ -9,14 +9,14 @@ import Col from "react-bootstrap/Col";
 import ListGroupItem from "react-bootstrap/ListGroupItem"
 import "./style.css";
 
-function Stage1Cards() {
+function BossCards() {
     return (
         <Container fluid="md">
             <Jumbotron>
-                <h1>Your adventure leads you to Stage One!</h1>
+                <h1>Your adventure leads you to the Boss Battle!!</h1>
                 <p>
                     Prepare to fight the monster in front of you!
-    </p>
+                </p>
             </Jumbotron>
             <Col xs={6} className="justify-content-left">
                 <CardGroup>
@@ -40,13 +40,14 @@ function Stage1Cards() {
                             <ListGroupItem><Button variant="success">Potion</Button></ListGroupItem>
                             <ListGroupItem><Button variant="info">Run!</Button></ListGroupItem>
                         </ListGroup>
-                        <Card.Body>
+                        {/* <Card.Body>
                             <Card.Link href="#">Card Link</Card.Link>
                             <Card.Link href="#">Another Link</Card.Link>
-                        </Card.Body>
+                        </Card.Body> */}
                     </Card>
                 </CardGroup>
             </Col>
+            <br/>
             <Col xs={6} className="justify-content-right">
                 <CardGroup>
                     <Card style={{ width: '18rem' }} className="enemy">
@@ -74,4 +75,4 @@ function Stage1Cards() {
     );
 }
 
-export default Stage1Cards;
+export default BossCards;

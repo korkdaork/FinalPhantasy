@@ -1,9 +1,10 @@
 import React from "react";
+import BossCards from "../Components/Boss"
 
-function Boss(){
-    return(
-        <div>Boss</div>
-    );
+const Boss = () => {
+    return (
+        <BossCards></BossCards>
+    )
 }
 
 export default Boss;
