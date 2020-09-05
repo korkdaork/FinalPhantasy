@@ -16,7 +16,7 @@ function BossCards() {
                 <h1>Your adventure leads you to the Boss Battle!!</h1>
                 <p>
                     Prepare to fight the monster in front of you!
-                </p>
+            </p>
             </Jumbotron>
             <Col xs={6} className="justify-content-left">
                 <CardGroup>

@@ -1,0 +1,19 @@
+nav {
+  background-image: linear-gradient(
+      rgba(29, 23, 116, 0.9),
+      rgba(63, 25, 25, 0.9)
+    ),
+    url(../../Assets/FinalPhantasy.png);
+  color: blue;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+a {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+li {
+  display: flex;
+}
