@@ -23,6 +23,8 @@ function Stores (){
   const [buttonDEnabled, setButtonDEnabled]=useState(true);
   const [buttonEEnabled, setButtonEEnabled]=useState(true);
   const [buttonFEnabled, setButtonFEnabled]=useState(true);
+  const [potionButton, setPotionButton]=useState(false);
+  const [potion, setPotion]=useState(0);
 
   const handleButtonAPressed = ()=>{
     setButtonAEnabled(false);
@@ -41,8 +43,13 @@ function Stores (){
     setButtonCEnabled(false);
   }
   const handleButtonDPressed = () =>{
-    setButtonDEnabled(false);
-    
+    let numPotions=potion;
+    numPotions=numPotions +1;
+    if (numPotions === 5) {
+      setPotionButton(true)
+    }
+    setPotion(numPotions);
+    // setButtonDEnabled(false);
   }
   const handleButtonEPressed= ()=>{
     setButtonEEnabled(false);
@@ -54,7 +61,7 @@ function Stores (){
   }
 
 
-const { gil, hp, attack, defense, speed, potion } = useContext(DeveloperContext)
+// const { gil, hp, attack, defense, speed, potion } = useContext(DeveloperContext)
   return (
   
     
@@ -72,7 +79,7 @@ const { gil, hp, attack, defense, speed, potion } = useContext(DeveloperContext)
             
             href="/stage1">Continue Adventure</Button>
           </p>
-          <p>Gil: {gil} </p>
+          {/* <p>Gil: {gil} </p> */}
         </Jumbotron>
         <CardGroup>
           <Card>
@@ -146,8 +153,8 @@ const { gil, hp, attack, defense, speed, potion } = useContext(DeveloperContext)
               </Card.Text>
             </Card.Body>
             <Card.Footer>
-              <Button 
-              disabled={!buttonDEnabled}
+              <Button button id="potionButton"
+              disabled={potionButton}
               onClick={handleButtonDPressed}
               id="buy" variant="primary">Buy</Button>{' '}</Card.Footer>
           </Card>
