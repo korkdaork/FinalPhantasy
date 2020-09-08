@@ -2,6 +2,7 @@ import React from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import "./style.css";
+import Container from "react-bootstrap/esm/Container";
 
 function Signups() {
 
@@ -35,7 +36,8 @@ function Signups() {
         setPassword({ ...formObject, [name]: value })
     };
 
-    // likely to be in the signup than login
+    // When the form is submitted, use the API.saveBook method to save the book data
+    // Then reload books from the database
     function handleFormSubmit(event) {
         event.preventDefault();
         if (formObject.title && formObject.author) {
@@ -61,7 +63,7 @@ function Signups() {
             </form-row>
             <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email address {username.length} </Form.Label>
-                <Form.Control type="email" placeholder="Enter email" onChange={e => setUsername(e.target.value)} />
+                <Form.Control type="email" placeholder="Enter email" value={this.state.username} onChange={e => this.setUsername(e)} />
                 <Form.Text className="text-muted">
                     You will use your email to login.
                     </Form.Text>

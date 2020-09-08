@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+var bcrypt = require('bcrypt-nodejs');
 
 const userSchema = new Schema({
     // The email cannot be null, and must be a proper email before creation
@@ -18,24 +19,34 @@ const userSchema = new Schema({
     }
 });
 
-// Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
-User.prototype.validPassword = function (password) {
-    return bcrypt.compareSync(password, this.password);
-};
-// Hooks are automatic methods that run during various phases of the User Model lifecycle
-// In this case, before a User is created, we will automatically hash their password
-User.addHook("beforeCreate", user => {
-    user.password = bcrypt.hashSync(
-        user.password,
-        bcrypt.genSaltSync(10),
-        null
-    );
+userSchema.pre('save', function (next) {
+    var user = this;
+    if (this.isModified('password') || this.isNew) {
+        bcrypt.genSalt(10, function (err, salt) {
+            if (err) {
+                return next(err);
+            }
+            bcrypt.hash(user.password, salt, null, function (err, hash) {
+                if (err) {
+                    return next(err);
+                }
+                user.password = hash;
+                next();
+            });
+        });
+    } else {
+        return next();
+    }
 });
-User.associate = function (models) {
-    User.hasMany(models.Stats, {
-        onDelete: "cascade"
-    })
-}
+
+userSchema.methods.comparePassword = function (passw, cb) {
+    bcrypt.compare(passw, this.password, function (err, isMatch) {
+        if (err) {
+            return cb(err);
+        }
+        cb(null, isMatch);
+    });
+};
 
 const User = mongoose.model("User", userSchema);
 
