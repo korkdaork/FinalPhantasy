@@ -14,8 +14,8 @@ export default {
     return axios.delete("/api/items/" + id);
   },
   // Saves a book to the database
-  saveItem: function (bookData) {
-    return axios.post("/api/items", bookData);
+  saveItem: function (itemData) {
+    return axios.post("/api/items", itemData);
   },
   // Gets all books
   getStats: function () {
@@ -30,8 +30,8 @@ export default {
     return axios.delete("/api/stats/" + id);
   },
   // Saves a book to the database
-  saveStat: function (bookData) {
-    return axios.post("/api/stats", bookData);
+  saveStat: function (statData) {
+    return axios.post("/api/stats", statData);
   },
   // Gets all books
   getUsers: function () {
@@ -46,7 +46,7 @@ export default {
     return axios.delete("/api/user/" + id);
   },
   // Saves a book to the database
-  saveUser: function (bookData) {
-    return axios.post("/api/user", bookData);
+  saveUser: function (saveData) {
+    return axios.post("/api/user", saveData);
   }
 };
