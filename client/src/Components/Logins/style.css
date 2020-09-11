@@ -4,6 +4,16 @@ a.btn.btn-primary {
   border-color: antiquewhite;
 }
 
+#a.btn.btn-primary:hover {
+  background-color: blue;
+}
+
+a.btn.btn-primary:active {
+  background-color: blue;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 .jumbotron {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
