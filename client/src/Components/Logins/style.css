@@ -1,0 +1,25 @@
+a.btn.btn-primary {
+  background-color: rgb(16, 5, 75);
+  outline-color: antiquewhite;
+  border-color: antiquewhite;
+}
+
+.jumbotron {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.container-fluid {
+  background-image: url('../../Assets/background.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+label.form-label {
+  color: antiquewhite;
+}
+
+form {
+  padding-bottom: 100px;
+}
