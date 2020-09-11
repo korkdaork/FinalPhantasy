@@ -1,11 +1,11 @@
 import React from "react";
 import Stores from "../Components/Stores"
 
-function Store(){
+function Store({buyPotion}){
 
-
+console.log(buyPotion);
     return(
-        <Stores/>
+        <Stores buyPotion={buyPotion}/>
     );
 }
 
