@@ -6,10 +6,12 @@ const userSchema = new Schema({
     // The email cannot be null, and must be a proper email before creation
     email: {
         type: String
-
     },
     // The password cannot be null
     password: {
+        type: String
+    },
+    id: {
         type: String
     }
 });
