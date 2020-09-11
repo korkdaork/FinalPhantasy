@@ -8,6 +8,7 @@ function Signups() {
 
     const [newUser, setNewUser] = useState({ firstName: "", lastName: "", email: "", password: "", confirmPassword: "" });
 
+
     // Load all books and store them with setBooks
 
     // Loads all books and sets them to books
