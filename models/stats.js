@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const statsSchema = new Schema({
-    gil: DataTypes.INTEGER,
-    hp: DataTypes.INTEGER,
-    attack: DataTypes.INTEGER,
-    defense: DataTypes.INTEGER,
-    speed: DataTypes.INTEGER,
-    potion: DataTypes.INTEGER,
+    gil: Number,
+    hp: Number,
+    attack: Number,
+    defense: Number,
+    speed: Number,
+    potion: Number,
 });
 
 const Stats = mongoose.model("Stats", statsSchema);

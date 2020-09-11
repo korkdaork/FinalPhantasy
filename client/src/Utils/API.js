@@ -33,7 +33,7 @@ export default {
   saveStat: function (statData) {
     return axios.post("/api/stats", statData);
   },
-  // Gets all books
+  // Gets all user
   getUsers: function () {
     return axios.get("/api/user");
   },

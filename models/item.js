@@ -2,12 +2,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const itemsSchema = new Schema({
-    name: DataTypes.STRING,
-    hp: DataTypes.INTEGER,
-    attack: DataTypes.INTEGER,
-    defense: DataTypes.INTEGER,
-    speed: DataTypes.INTEGER,
-    Category: DataTypes.STRING,
+    name: {
+        type: String
+    },
+    hp: Number,
+    attack: Number,
+    defense: Number,
+    speed: Number,
+    Category: Number,
 });
 
 const Item = mongoose.model("Item", itemsSchema);
