@@ -1,4 +1,4 @@
-import React, { useContext,useState} from "react";
+import React, { useContext,useState, useEffect} from "react";
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Button from 'react-bootstrap/Button';
@@ -7,7 +7,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import axe from "../../Assets/axe.png";
 import sword from "../../Assets/sword.png";
 import hammer from "../../Assets/hammer.png";
-import potions from "../../Assets/potion.png";
+import health from "../../Assets/potion.png";
 import light from "../../Assets/lightarmor.png";
 import heavy from "../../Assets/heavyarmor.png";
 import DeveloperContext from "../../Utils/DeveloperContext";
@@ -16,7 +16,9 @@ import "./style.css";
 
 
 
-function Stores (){
+function Stores ({buyPotion}){
+  const {gilcontext, hpcontext, attackcontext, defensecontext, speedcontext, potioncontext } = useContext(DeveloperContext)
+
   const [buttonAEnabled, setButtonAEnabled]=useState (true);
   const [buttonBEnabled, setButtonBEnabled]=useState(true);
   const [buttonCEnabled, setButtonCEnabled]=useState (true);
@@ -30,6 +32,7 @@ function Stores (){
     setButtonAEnabled(false);
     setButtonBEnabled(false);
     setButtonCEnabled(false);
+    buyPotion("gilcontext")
   };
 
   const handleButtonBPressed = () => {
@@ -43,13 +46,15 @@ function Stores (){
     setButtonCEnabled(false);
   }
   const handleButtonDPressed = () =>{
+    console.log(potion)
     let numPotions=potion;
     numPotions=numPotions +1;
     if (numPotions === 5) {
       setPotionButton(true)
     }
     setPotion(numPotions);
-    // setButtonDEnabled(false);
+    setButtonDEnabled(false);
+    buyPotion("potioncontext",numPotions);
   }
   const handleButtonEPressed= ()=>{
     setButtonEEnabled(false);
@@ -60,8 +65,6 @@ function Stores (){
     setButtonFEnabled(false);
   }
 
-
-// const { gil, hp, attack, defense, speed, potion } = useContext(DeveloperContext)
   return (
   
     
@@ -79,7 +82,7 @@ function Stores (){
             
             href="/stage1">Continue Adventure</Button>
           </p>
-          {/* <p>Gil: {gil} </p> */}
+          <p>Gil: {gilcontext} </p>
         </Jumbotron>
         <CardGroup>
           <Card>
@@ -142,9 +145,9 @@ function Stores (){
               id="buy" variant="primary">Buy</Button>{' '}</Card.Footer>
           </Card>
           <Card>
-            <Card.Img variant="top" src={potions} />
+            <Card.Img variant="top" src={health} />
             <Card.Body>
-              <Card.Title id="potion">Potion</Card.Title>
+              <Card.Title id="potion">Potion {potioncontext}</Card.Title>
               <Card.Text>
                 <ListGroup>
                   <ListGroup.Item>HP+: 20</ListGroup.Item>

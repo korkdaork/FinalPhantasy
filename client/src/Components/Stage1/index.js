@@ -11,6 +11,7 @@ import ListGroupItem from "react-bootstrap/ListGroupItem"
 import combatAPI from "../../Utils/combatAPI"
 import "./style.css";
 
+
 function Stage1Cards() {
     const monsterArray = [
         {
@@ -56,7 +57,7 @@ function Stage1Cards() {
         }
     }
     return (
-        <Container>
+        <Container-fluid>
             <Jumbotron>
                 <h1>Your adventure leads you to Stage One!</h1>
                 <p>
@@ -95,11 +96,11 @@ function Stage1Cards() {
                 </Col>
                 <Col xs={6} md={4}>
                     {win &&
-                        <div>
+                        <div className="victory">
                             {win}
                         </div>}
                     {lose &&
-                        <div>
+                        <div className="loser">
                             {lose}
                         </div>}
                 </Col>
@@ -129,7 +130,7 @@ function Stage1Cards() {
             </Row>
 
 
-        </Container>
+        </Container-fluid>
     );
 }
 
