@@ -11,9 +11,9 @@ const userSchema = new Schema({
     password: {
         type: String
     },
-    id: {
-        type: String
-    }
+    // id: {
+    //     type: String
+    // }
 });
 
 userSchema.pre('save', function (next) {
