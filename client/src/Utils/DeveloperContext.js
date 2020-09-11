@@ -2,12 +2,12 @@ import React, {useContext} from "react";
 
 
 const DeveloperContext = React.createContext({
-gil: 500,
-hp: 5,
-attack: 5,
-defense: 5,
-speed: 5,
-potion: 1
+gilcontext: 500,
+hpcontext: 5,
+attackcontext: 5,
+defensecontext: 5,
+speedcontext: 5,
+potioncontext: 1
 });
 
 export default DeveloperContext;
