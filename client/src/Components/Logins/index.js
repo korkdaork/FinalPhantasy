@@ -7,7 +7,7 @@ import "./style.css"
 
 function Logins() {
     return (
-      <div>
+      <div className = "container-fluid">
         <Jumbotron>
         <h1>Welcome to Final Phantasy</h1>
         <p>
@@ -27,8 +27,10 @@ function Logins() {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" />
             </Form.Group>
-           
+           <br/>
             <Button href="/main">Login</Button>
+            <br/>
+            <hr/>
         </Form>
       </div>
     );
