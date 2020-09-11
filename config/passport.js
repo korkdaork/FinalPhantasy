@@ -37,5 +37,6 @@ passport.deserializeUser((obj, cb) => {
   cb(null, obj);
 });
 
-// Exporting our configured passport
+// Exporting our configured passport 
+//jwt is needed
 module.exports = passport;

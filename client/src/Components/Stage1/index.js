@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Button from 'react-bootstrap/Button';
@@ -8,55 +8,54 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroupItem from "react-bootstrap/ListGroupItem"
+import combatAPI from "../../Utils/combatAPI"
 import "./style.css";
 
 
 function Stage1Cards() {
-    // const [books, setBooks] = useState([])
-    // const [formObject, setFormObject] = useState({})
+    const monsterArray = [
+        {
+            name: "Orc",
+            hp: 100,
+            attack: 50,
+            defense: 20,
+            gil: 45
+        },
+        {
+            name: "Slime",
+            hp: 75,
+            attack: 55,
+            defense: 15,
+            gil: 45
+        },
+        {
+            name: "Chocobooboo",
+            hp: 150,
+            attack: 35,
+            defense: 10,
+            gil: 45
+        }
+    ]
+    const [monsterStats, setMonsterStats] = useState(
+        monsterArray[Math.floor(Math.random() * Math.floor(3))]
 
-    // // Load all books and store them with setBooks
-    // useEffect(() => {
-    //     loadBooks()
-    // }, [])
+    );
+    const [win, setWin] = useState(
 
-    // // Loads all books and sets them to books
-    // function loadBooks() {
-    //     API.getBooks()
-    //         .then(res =>
-    //             setBooks(res.data)
-    //         )
-    //         .catch(err => console.log(err));
-    // };
+    )
+    const [lose, setLose] = useState(
 
-    // // Deletes a book from the database with a given id, then reloads books from the db
-    // function deleteBook(id) {
-    //     API.deleteBook(id)
-    //         .then(res => loadBooks())
-    //         .catch(err => console.log(err));
-    // }
+    )
 
-    // // Handles updating component state when the user types into the input field
-    // function handleInputChange(event) {
-    //     const { name, value } = event.target;
-    //     setFormObject({ ...formObject, [name]: value })
-    // };
-
-    // // When the form is submitted, use the API.saveBook method to save the book data
-    // // Then reload books from the database
-    // function handleFormSubmit(event) {
-    //     event.preventDefault();
-    //     if (formObject.title && formObject.author) {
-    //         API.saveBook({
-    //             title: formObject.title,
-    //             author: formObject.author,
-    //             synopsis: formObject.synopsis
-    //         })
-    //             .then(res => loadBooks())
-    //             .catch(err => console.log(err));
-    //     }
-    // };
-
+    const handleAttack = () => {
+        console.log("attack")
+        const newHitPoints = combatAPI.attack(40, monsterStats.hp, monsterStats.defense);
+        if (newHitPoints <= 0) {
+            setWin("You Win");
+        } else {
+            setMonsterStats({ ...monsterStats, hp: newHitPoints });
+        }
+    }
     return (
         <Container-fluid>
             <Jumbotron>
@@ -83,7 +82,7 @@ function Stage1Cards() {
                                 <ListGroupItem>Speed: </ListGroupItem>
                             </ListGroup>
                             <ListGroup className="list-group-flush">
-                                <ListGroupItem><Button variant="danger">Attack</Button></ListGroupItem>
+                                <ListGroupItem><Button variant="danger" onClick={handleAttack}>Attack</Button></ListGroupItem>
                                 <ListGroupItem><Button variant="warning">Guard</Button></ListGroupItem>
                                 <ListGroupItem><Button variant="success">Potion</Button></ListGroupItem>
                                 <ListGroupItem><Button variant="info">Run!</Button></ListGroupItem>
@@ -96,23 +95,30 @@ function Stage1Cards() {
                     </CardGroup>
                 </Col>
                 <Col xs={6} md={4}>
-                    
+                    {win &&
+                        <div className="victory">
+                            {win}
+                        </div>}
+                    {lose &&
+                        <div className="loser">
+                            {lose}
+                        </div>}
                 </Col>
                 <Col xs={6} md={4}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="enemy">
                             <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
                             <Card.Body>
-                                <Card.Title>Card Title</Card.Title>
+                                <Card.Title>{monsterStats.name}</Card.Title>
                                 <Card.Text>
                                     Some quick example text to build on the card title and make up the bulk of
                                     the card's content.
                                 </Card.Text>
                             </Card.Body>
                             <ListGroup className="list-group-flush stats">
-                                <ListGroupItem>Attack: </ListGroupItem>
-                                <ListGroupItem>Defense: </ListGroupItem>
-                                <ListGroupItem>Speed: </ListGroupItem>
+                                <ListGroupItem>HP: {monsterStats && monsterStats.hp}</ListGroupItem>
+                                <ListGroupItem>Attack: {monsterStats && monsterStats.attack}</ListGroupItem>
+                                <ListGroupItem>Defense: {monsterStats && monsterStats.defense}</ListGroupItem>
                             </ListGroup>
                             {/* <Card.Body>
                                 <Card.Link href="#">Card Link</Card.Link>
@@ -122,8 +128,8 @@ function Stage1Cards() {
                     </CardGroup>
                 </Col>
             </Row>
-            
-      
+
+
         </Container-fluid>
     );
 }
