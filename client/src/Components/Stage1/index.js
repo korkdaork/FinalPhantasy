@@ -57,7 +57,7 @@ function Stage1Cards() {
     // };
 
     return (
-        <Container>
+        <Container-fluid>
             <Jumbotron>
                 <h1>Your adventure leads you to Stage One!</h1>
                 <p>
@@ -123,7 +123,7 @@ function Stage1Cards() {
             </Row>
             
       
-        </Container>
+        </Container-fluid>
     );
 }
 
