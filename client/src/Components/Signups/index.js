@@ -49,33 +49,6 @@ function Signups() {
     //     }
     // };
 
-<<<<<<< HEAD
-    return (
-        <Form>
-            <form-row>
-                <form-col>
-                    <Form.Control placeholder="First name" />
-                </form-col>
-                <form-col>
-                    <Form.Control placeholder="Last name" />
-                </form-col>
-            </form-row>
-            <Form.Group controlId="formBasicEmail">
-                {/* <Form.Label>Email address {username.length} </Form.Label> */}
-                {/* <Form.Control type="email" placeholder="Enter email" onChange={e => setUsername(e.target.value)} /> */}
-                <Form.Text className="text-muted">
-                    You will use your email to login.
-                    </Form.Text>
-            </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-                <Form.Label>Re-Enter Password</Form.Label>
-                {/* <Form.Control type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} /> */}
-            </Form.Group>
-            <Button href="/main">Submit</Button>
-=======
     // return (
     //     <Form>
     //         <form-row>
@@ -101,7 +74,6 @@ function Signups() {
     //             <Form.Control type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
     //         </Form.Group>
     //         <Button href="/main">Submit</Button>
->>>>>>> 8a16ea9a3a9acf83f366027255c2e9c0024d1341
 
     //     </Form>
     // );
