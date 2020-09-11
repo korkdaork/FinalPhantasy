@@ -13,8 +13,4 @@ router
     .put(FFController.update)
     .delete(FFController.remove);
 
-router
-    .route("/stage1")
-    .get(FFController.findOne)
-
 module.exports = router;

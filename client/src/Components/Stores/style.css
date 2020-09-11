@@ -1,0 +1,35 @@
+.card-footer {
+  background-image: linear-gradient(
+      rgba(29, 23, 116, 0.9),
+      rgba(63, 25, 25, 0.9)
+    ),
+    url('../../Assets/brick.png');
+}
+
+.card-body {
+  background-image: linear-gradient(
+      rgba(63, 25, 25, 0.9),
+      rgba(29, 23, 116, 0.9)
+    ),
+    url('../../Assets/brick.png');
+}
+
+.card-title.h5 {
+  color: antiquewhite;
+}
+
+#buy {
+  background-color: black;
+  border-color: antiquewhite;
+  color: antiquewhite;
+}
+
+#buy:hover {
+  background-color: blue;
+}
+
+#buy:active {
+  background-color: blue;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
