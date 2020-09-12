@@ -15,7 +15,7 @@ function Logins() {
 
   // // Handles updating component state when the user types into the input field
 
-  // // likely to be in the signup than login
+  // likely to be in the signup than login
   // const { id } = useParams()
   // useEffect(() => {
   //   API.getUser(id)
@@ -33,7 +33,7 @@ function Logins() {
   //     const newUserIndex = userIndex - 1;
   //     previousUser(newUserIndex);
   //   }
-  
+  // }
 
   return (
     <div className="container-fluid">
