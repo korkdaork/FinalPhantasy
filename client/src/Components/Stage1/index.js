@@ -11,6 +11,10 @@ import ListGroupItem from "react-bootstrap/ListGroupItem"
 import combatAPI from "../../Utils/combatAPI"
 import API from "../../Utils/API"
 import "./style.css";
+import player from "../../Assets/knight.gif"
+import orc from "../../Assets/orc.gif"
+import slime from "../../Assets/slime.gif"
+import chocobo from "../../Assets/chocobo.gif"
 
 
 function Stage1Cards() {
@@ -21,7 +25,8 @@ function Stage1Cards() {
             attack: 50,
             defense: 20,
             gil: 45,
-            intro: "The savage Orc of Mount Kararak was separated from his horde.  His eyes began to glare as he sees you.  He is ready to crush you!"
+            intro: "The savage Orc of Mount Kararak was separated from his horde.  His eyes began to glare as he sees you.  He is ready to crush you!",
+            image: orc
         },
         {
             name: "Slime",
@@ -29,7 +34,8 @@ function Stage1Cards() {
             attack: 55,
             defense: 15,
             gil: 45,
-            intro: "Acidic slime that can melt the toughest armors if absorbed, starts jiggling towards you!"
+            intro: "Acidic slime that can melt the toughest armors if absorbed, starts jiggling towards you!",
+            image: slime
         },
         {
             name: "Chocobooboo",
@@ -37,7 +43,8 @@ function Stage1Cards() {
             attack: 35,
             defense: 10,
             gil: 45,
-            intro: "This ain't your regular Honey Boo Boo...this is Chocobooboo! Chocobooboo glares at you with anger after noticing that you stepped on its food!"
+            intro: "This ain't your regular Honey Boo Boo...this is Chocobooboo! Chocobooboo glares at you with anger after noticing that you stepped on its food!",
+            image: chocobo
         },
         {
             name: "Yevzilla",
@@ -45,7 +52,8 @@ function Stage1Cards() {
             attack: 25,
             defense: 5,
             gil: 200,
-            intro: "Yevzilla rises out of the ocean! Someone woke him from his slumber! If not defeated quickly, his lazer breath will destroy ALL!"
+            intro: "Yevzilla rises out of the ocean! Someone woke him from his slumber! If not defeated quickly, his lazer breath will destroy ALL!",
+            image: chocobo
         },
         {
             name: "Biala-lama",
@@ -53,7 +61,8 @@ function Stage1Cards() {
             attack: 40,
             defense: 40,
             gil: 200,
-            intro: "Biala-lama nears! Watch out for the elbos and knees of this creature - they are muaitastic!"
+            intro: "Biala-lama nears! Watch out for the elbows and knees of this creature - they are muaitastic!",
+            image: chocobo
         },
         {
             name: "Himadrigotica",
@@ -61,7 +70,8 @@ function Stage1Cards() {
             attack: 30,
             defense: 15,
             gil: 45,
-            intro: "Himadrigotica is a unique species of a goat that can only be found in the Dark Forest and on Mount Kararak.  It has a nasty kick and an even nastier meeehhh-nsult!"
+            intro: "Himadrigotica is a unique species of a goat that can only be found in the Dark Forest and on Mount Kararak.  It has a nasty kick and an even nastier meeehhh-nsult!",
+            image: chocobo
         },
         {
             name: "Garretpooficus",
@@ -69,7 +79,8 @@ function Stage1Cards() {
             attack: 10,
             defense: 35,
             gil: 200,
-            intro: "Not much is know about this creature except that it waits for its victims and then throws insults at them"
+            intro: "Not much is know about this creature except that it waits for its victims and then throws insults at them",
+            image: chocobo
         },
         {
             name: "Kaiwhywhywhy",
@@ -77,7 +88,8 @@ function Stage1Cards() {
             attack: 35,
             defense: 10,
             gil: 200,
-            intro: "This creature will defeat you with its WHY WHY WHY attack!"
+            intro: "This creature will defeat you with its WHY WHY WHY attack!",
+            image: chocobo
         }
     ]
     const [monsterStats, setMonsterStats] = useState(
@@ -108,6 +120,7 @@ function Stage1Cards() {
         const monsterHitPoints = combatAPI.attack(40, monsterStats.hp, monsterStats.defense);
         if (monsterHitPoints <= 0) {
             setWin("You Win");
+            //add user gil after defeating monster
         } else {
             setMonsterStats({ ...monsterStats, hp: monsterHitPoints })
             // const monsterCounter = combatAPI.monsterRet(100, 20, monsterStats.attack);
@@ -134,7 +147,7 @@ function Stage1Cards() {
                 <Col xs={6} md={4}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="player">
-                            <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+                            <Card.Img variant="top" src={player} />
                             <Card.Body>
                                 <Card.Title>Player Name</Card.Title>
                                 <Card.Text>
@@ -174,7 +187,7 @@ function Stage1Cards() {
                 <Col xs={6} md={4}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="enemy">
-                            <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+                            <Card.Img variant="top" src={monsterStats.image} />
                             <Card.Body>
                                 <Card.Title>{monsterStats.name}</Card.Title>
                                 <Card.Text>

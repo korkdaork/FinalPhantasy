@@ -10,7 +10,7 @@ export default {
     },
 
     usePotion: function (userHP) {
-        return userHP += 20;
+        return userHP += 50;
     },
 
     run: function () {
