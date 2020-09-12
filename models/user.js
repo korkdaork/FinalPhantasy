@@ -11,13 +11,13 @@ const userSchema = new Schema({
     // The password cannot be null
     password: {
         type: String
-    },
-    tokens: [{
-        token: {
-            type: String,
-            required: true
-        }
-    }]
+    }
+    // tokens: [{
+    //     token: {
+    //         type: String,
+    //         required: true
+    //     }
+    // }]
 });
 
 userSchema.pre('save', async function (next) {

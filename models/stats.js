@@ -11,6 +11,8 @@ const statsSchema = new Schema({
     userId: Object
 });
 
+
+
 const Stats = mongoose.model("Stats", statsSchema);
 
 module.exports = Stats;

@@ -17,6 +17,14 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(routes);
 
+app.post('/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true
+  })
+);
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/FFProject");
 
 app.listen(PORT, function () {

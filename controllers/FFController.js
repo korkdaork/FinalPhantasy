@@ -9,9 +9,9 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findById: function (req, res) {
+  findItemsByUserId: function (req, res) {
     db.Item
-      .findById(req.params.id)
+      .findOne({ userId: Object(req.params.id) })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -42,9 +42,9 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findById: function (req, res) {
+  findStatsByUserId: function (req, res) {
     db.Stats
-      .findById(req.params.id)
+      .findOne({ userId: Object(req.params.id) })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
