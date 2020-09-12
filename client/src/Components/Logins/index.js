@@ -7,7 +7,7 @@ import "./style.css"
 
 function Logins() {
 
-  const [loadUser, setLoadUser] = useState({ email: "", password: "" });
+  // const [loadUser, setLoadUser] = useState({ email: "", password: "" });
 
   // Load all books and store them with setBooks
 
@@ -16,24 +16,24 @@ function Logins() {
   // Handles updating component state when the user types into the input field
 
   // likely to be in the signup than login
-  const { id } = useParams()
-  useEffect(() => {
-    API.getUser(id)
-      .then(res => setLoadUser(res.data))
-      .catch(err => console.log(err));
-  }, [])
+  // const { id } = useParams()
+  // useEffect(() => {
+  //   API.getUser(id)
+  //     .then(res => setLoadUser(res.data))
+  //     .catch(err => console.log(err));
+  // }, [])
 
-  function handleBtnClick(event) {
-    // Get the title of the clicked button
-    const btnName = event.target.getAttribute("data-value");
-    if (btnName === "next") {
-      const newUserIndex = userIndex + 1;
-      nextUser(newUserIndex);
-    } else {
-      const newUserIndex = userIndex - 1;
-      previousUser(newUserIndex);
-    }
-  }
+  // function handleBtnClick(event) {
+  //   // Get the title of the clicked button
+  //   const btnName = event.target.getAttribute("data-value");
+  //   if (btnName === "next") {
+  //     const newUserIndex = userIndex + 1;
+  //     nextUser(newUserIndex);
+  //   } else {
+  //     const newUserIndex = userIndex - 1;
+  //     previousUser(newUserIndex);
+  //   }
+  // }
 
   return (
     <div className="container-fluid">
