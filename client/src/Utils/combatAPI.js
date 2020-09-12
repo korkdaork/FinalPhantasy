@@ -5,16 +5,20 @@ export default {
         return monsterHP -= userAtk - monsterDef;
     },
 
-    guard: function () {
-
+    guard: function (userHP, userDef, monsterAtk) {
+        return userHP -= monsterAtk - (userDef * 2);
     },
 
-    usePotion: function () {
-        return;
+    usePotion: function (userHP) {
+        return userHP += 20;
     },
 
     run: function () {
         return;
+    },
+
+    monsterRet: function (userHP, userDef, monsterAtk) {
+        return userHP -= monsterAtk - userDef;
     }
 
 };
