@@ -9,11 +9,11 @@ function Logins() {
 
   // const [loadUser, setLoadUser] = useState({ email: "", password: "" });
 
-  // Load all books and store them with setBooks
+  // // Load all books and store them with setBooks
 
-  // Loads all books and sets them to books
+  // // Loads all books and sets them to books
 
-  // Handles updating component state when the user types into the input field
+  // // Handles updating component state when the user types into the input field
 
   // likely to be in the signup than login
   // const { id } = useParams()
