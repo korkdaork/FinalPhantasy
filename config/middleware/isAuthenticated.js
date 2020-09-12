@@ -1,10 +1,21 @@
-// This is middleware for restricting routes a user is not allowed to visit if not logged in
-module.exports = function(req, res, next) {
-  // If the user is logged in, continue with the request to the restricted route
-  if (req.user) {
-    return next();
+
+const jwt = require('jsonwebtoken')
+const User = require('../models/User')
+
+const auth = async (req, res, next) => {
+  const token = req.header('Authorization').replace('Bearer ', '')
+  const data = jwt.verify(token, process.env.JWT_KEY)
+  try {
+    const user = await User.findOne({ _id: data._id, 'tokens.token': token })
+    if (!user) {
+      throw new Error()
+    }
+    req.user = user
+    req.token = token
+    next()
+  } catch (error) {
+    res.status(401).send({ error: 'Not authorized to access this resource' })
   }
 
-  // If the user isn't logged in, redirect them to the login page
-  return res.redirect("/");
 };
+module.exports = auth
