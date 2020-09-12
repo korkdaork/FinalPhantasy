@@ -85,9 +85,13 @@ module.exports = {
     db.User
       .create(req.body)
       .then(() => {
+        console.log(req.body, "here's the req")
         res.redirect(307, "/api/login");
       })
-      .catch(err => res.status(422).json(err));
+      .catch(err => {
+        console.log("create user fail")
+        res.status(422).json(err)
+      });
   },
   update: function (req, res) {
     db.User
