@@ -25,8 +25,8 @@ function Logins() {
 
   function handleBtnClick(event) {
     // Get the title of the clicked button
-    const btnName = event.target.getAttribute("data-value");
-    if (btnName === "next") {
+    const passwordConfirm = event.target.getAttribute("data-value");
+    if (passwordConfirm === loadUser.password) {
       const newUserIndex = userIndex + 1;
       nextUser(newUserIndex);
     } else {
