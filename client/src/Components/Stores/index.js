@@ -27,42 +27,125 @@ function Stores ({buyPotion}){
   const [buttonFEnabled, setButtonFEnabled]=useState(true);
   const [potionButton, setPotionButton]=useState(false);
   const [potion, setPotion]=useState(0);
+  const [attack, setAttack]=useState(0);
+  const [defense, setDefense]=useState(0);
+  const [speed, setSpeed]=useState(0);
+  const [hp, setHp]=useState(0);
+  const [gil, setGil]=useState(0);
+
+  let numAttack=attack;
+  let numDefense=defense;
+  let numSpeed=speed;
+  let numHp=hp;
+  let numGil=gil;
 
   const handleButtonAPressed = ()=>{
     setButtonAEnabled(false);
     setButtonBEnabled(false);
     setButtonCEnabled(false);
-    buyPotion("gilcontext")
-  };
+    console.log (attack, defense, speed, gil);
+    numAttack=numAttack+3;
+    numDefense=numDefense+5;
+    numSpeed=numSpeed+5;
+    numGil=gilcontext-5;
+    setAttack(numAttack);
+    setDefense(numDefense);
+    setSpeed(numSpeed);
+    setGil(numGil);
+    buyPotion("attackcontext", numAttack);
+    buyPotion("defensecontext",numDefense);
+    buyPotion("speedcontext", numSpeed);
+    buyPotion("gilcontext", numGil);
+  }
 
   const handleButtonBPressed = () => {
     setButtonAEnabled(false);
     setButtonBEnabled(false);
     setButtonCEnabled(false);
+    console.log (attack, defense, speed, gil);
+    numAttack=numAttack+4;
+    numDefense=numDefense+3;
+    numSpeed=numSpeed+3;
+    numGil=gilcontext-5;
+    setAttack(numAttack);
+    setDefense(numDefense);
+    setSpeed(numSpeed);
+    setGil(numGil);
+    buyPotion("attackcontext", numAttack);
+    buyPotion("defensecontext",numDefense);
+    buyPotion("speedcontext", numSpeed);
+    buyPotion("gilcontext", numGil);
   }
   const handleButtonCPressed = () =>{
     setButtonAEnabled(false);
     setButtonBEnabled(false);
     setButtonCEnabled(false);
+    console.log (attack, defense, speed, gil);
+    numAttack=numAttack+5;
+    numDefense=numDefense+2;
+    numSpeed=numSpeed+2;
+    numGil=gilcontext-5;
+    setAttack(numAttack);
+    setDefense(numDefense);
+    setSpeed(numSpeed);
+    setGil(numGil);
+    buyPotion("attackcontext", numAttack);
+    buyPotion("defensecontext",numDefense);
+    buyPotion("speedcontext", numSpeed);
+    buyPotion("gilcontext", numGil);
   }
   const handleButtonDPressed = () =>{
     console.log(potion)
     let numPotions=potion;
     numPotions=numPotions +1;
+    numGil=gilcontext -10;
     if (numPotions === 5) {
       setPotionButton(true)
     }
     setPotion(numPotions);
     setButtonDEnabled(false);
     buyPotion("potioncontext",numPotions);
+    buyPotion("gilcontext", numGil);
   }
   const handleButtonEPressed= ()=>{
     setButtonEEnabled(false);
     setButtonFEnabled(false);
+    console.log (hp, attack, defense, speed, gil);
+    numHp=numHp+15;
+    numAttack=numAttack+0;
+    numDefense=numDefense+20;
+    numSpeed=numSpeed-3;
+    numGil=gilcontext-15;
+    setHp(numHp)
+    setAttack(numAttack);
+    setDefense(numDefense);
+    setSpeed(numSpeed);
+    setGil(numGil);
+    buyPotion("hpcontext", numHp);
+    buyPotion("attackcontext", numAttack);
+    buyPotion("defensecontext",numDefense);
+    buyPotion("speedcontext", numSpeed);
+    buyPotion("gilcontext", numGil);
   }
   const handleButtonFPressed = ()=>{
     setButtonEEnabled(false);
     setButtonFEnabled(false);
+    console.log (hp, attack, defense, speed, gil);
+    numHp=numHp+30;
+    numAttack=numAttack+0;
+    numDefense=numDefense+50;
+    numSpeed=numSpeed-10;
+    numGil=gilcontext-25;
+    setHp(numHp)
+    setAttack(numAttack);
+    setDefense(numDefense);
+    setSpeed(numSpeed);
+    setGil(numGil);
+    buyPotion("hpcontext", numHp);
+    buyPotion("attackcontext", numAttack);
+    buyPotion("defensecontext",numDefense);
+    buyPotion("speedcontext", numSpeed);
+    buyPotion("gilcontext", numGil);
   }
 
   return (
@@ -88,7 +171,7 @@ function Stores ({buyPotion}){
           <Card>
             <Card.Img variant="top" src={sword} />
             <Card.Body>
-              <Card.Title id="sword">Sword</Card.Title>
+              <Card.Title id="sword">Sword </Card.Title>
               <Card.Text>
                 <ListGroup>
                   <ListGroup.Item>Attack: 3</ListGroup.Item>
@@ -108,7 +191,7 @@ function Stores ({buyPotion}){
           <Card>
             <Card.Img variant="top" src={axe} />
             <Card.Body>
-              <Card.Title id="axe" >Axe</Card.Title>
+              <Card.Title id="axe" >Axe </Card.Title>
               <Card.Text>
                 <ListGroup>
                   <ListGroup.Item>Attack: 4</ListGroup.Item>
@@ -128,7 +211,7 @@ function Stores ({buyPotion}){
           <Card>
             <Card.Img variant="top" src={hammer} />
             <Card.Body>
-              <Card.Title id="hammer">Mace</Card.Title>
+              <Card.Title id="hammer">Mace </Card.Title>
               <Card.Text>
                 <ListGroup>
                   <ListGroup.Item>Attack: 5</ListGroup.Item>
@@ -147,7 +230,7 @@ function Stores ({buyPotion}){
           <Card>
             <Card.Img variant="top" src={health} />
             <Card.Body>
-              <Card.Title id="potion">Potion {potioncontext}</Card.Title>
+              <Card.Title id="potion">Potion </Card.Title>
               <Card.Text>
                 <ListGroup>
                   <ListGroup.Item>HP+: 20</ListGroup.Item>
@@ -164,7 +247,7 @@ function Stores ({buyPotion}){
           <Card>
             <Card.Img variant="top" src={light} />
             <Card.Body>
-              <Card.Title id="light">Light Armor</Card.Title>
+              <Card.Title id="light">Light Armor </Card.Title>
               <Card.Text>
                 <ListGroup>
                   <ListGroup.Item>HP: 15</ListGroup.Item>
@@ -184,7 +267,7 @@ function Stores ({buyPotion}){
           <Card>
             <Card.Img variant="top" src={heavy} />
             <Card.Body>
-              <Card.Title id="heavy">Heavy Armor</Card.Title>
+              <Card.Title id="heavy">Heavy Armor </Card.Title>
               <Card.Text>
                 <ListGroup>
                   <ListGroup.Item>HP: 30</ListGroup.Item>

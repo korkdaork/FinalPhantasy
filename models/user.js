@@ -5,18 +5,15 @@ var bcrypt = require('bcrypt-nodejs');
 const userSchema = new Schema({
     // The email cannot be null, and must be a proper email before creation
     email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-            isEmail: true
-        }
+        type: String
     },
     // The password cannot be null
     password: {
-        type: DataTypes.STRING,
-        allowNull: false
-    }
+        type: String
+    },
+    // id: {
+    //     type: String
+    // }
 });
 
 userSchema.pre('save', function (next) {

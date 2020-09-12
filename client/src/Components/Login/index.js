@@ -1,83 +1,66 @@
 import React from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import "./style.css";
-import Container from "react-bootstrap/esm/Container";
+import Jumbotron from 'react-bootstrap/Jumbotron';
 
-function Signups() {
+import "./style.css"
 
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
+function Logins() {
 
-    // Load all books and store them with setBooks
-    useEffect(() => {
-        loadUser()
-    }, [])
+//   const [loadUser, setLoadUser] = useState({ email: "", password: "" });
 
-    // Loads all books and sets them to books
-    function loadUser() {
-        API.getUsers()
-            .then(res =>
-                setUsername(res.data)
-            )
-            .catch(err => console.log(err));
-    };
+//   // Load all books and store them with setBooks
 
-    // Deletes a book from the database with a given id, then reloads books from the db
-    function deleteBook(id) {
-        API.deleteBook(id)
-            .then(res => loadUser())
-            .catch(err => console.log(err));
-    }
+//   // Loads all books and sets them to books
 
-    // Handles updating component state when the user types into the input field
-    function handleInputChange(event) {
-        const { name, value } = event.target;
-        setPassword({ ...formObject, [name]: value })
-    };
+//   // Handles updating component state when the user types into the input field
 
-    // When the form is submitted, use the API.saveBook method to save the book data
-    // Then reload books from the database
-    function handleFormSubmit(event) {
-        event.preventDefault();
-        if (formObject.title && formObject.author) {
-            API.saveUser({
-                title: formObject.title,
-                author: formObject.author,
-                synopsis: formObject.synopsis
-            })
-                .then(res => loadUser())
-                .catch(err => console.log(err));
-        }
-    };
+//   // likely to be in the signup than login
+//   const { id } = useParams()
+//   useEffect(() => {
+//     API.getUser(id)
+//       .then(res => setLoadUser(res.data))
+//       .catch(err => console.log(err));
+//   }, [])
 
-    return (
-        <Form>
-            <form-row>
-                <form-col>
-                    <Form.Control placeholder="First name" />
-                </form-col>
-                <form-col>
-                    <Form.Control placeholder="Last name" />
-                </form-col>
-            </form-row>
-            <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address {username.length} </Form.Label>
-                <Form.Control type="email" placeholder="Enter email" value={this.state.username} onChange={e => this.setUsername(e)} />
-                <Form.Text className="text-muted">
-                    You will use your email to login.
-                    </Form.Text>
-            </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-                <Form.Label>Re-Enter Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
-            </Form.Group>
-            <Button href="/main">Submit</Button>
-
-        </Form>
-    );
+//   function handleBtnClick(event) {
+//     // Get the title of the clicked button
+//     const btnName = event.target.getAttribute("data-value");
+//     if (btnName === "next") {
+//       const newUserIndex = userIndex + 1;
+//       nextUser(newUserIndex);
+//     } else {
+//       const newUserIndex = userIndex - 1;
+//       previousUser(newUserIndex);
+//     }
 }
-export default Signups;
+
+  return (
+    <div>
+      <Jumbotron>
+        <h1>Welcome to Final Phantasy</h1>
+        <p>
+          Please login below to continue your journey, if you are not a member please
+          signup to get started.
+        </p>
+        <Button href="/signup">Sign up!</Button>
+      </Jumbotron>
+      <Form>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control type="email" placeholder="Enter email" onChange={handleInputChange} name="email" />
+
+        </Form.Group>
+
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="password" placeholder="Password" onClick={handleInputChange} name="password" />
+        </Form.Group>
+
+        <Button href="/main">Login</Button>
+      </Form>
+    </div>
+  );
+}
+
+export default Logins;
