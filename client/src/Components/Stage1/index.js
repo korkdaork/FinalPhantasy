@@ -65,7 +65,7 @@ function Stage1Cards() {
                 </p>
             </Jumbotron>
             <Row>
-                <Col xs={6} md={4}>
+                <Col xs={1} md={2}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="player">
                             <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
@@ -94,7 +94,7 @@ function Stage1Cards() {
                         </Card>
                     </CardGroup>
                 </Col>
-                <Col xs={6} md={4}>
+                <Col xs={1} md={2}>
                     {win &&
                         <div className="victory">
                             {win}
