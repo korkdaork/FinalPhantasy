@@ -144,7 +144,7 @@ function Stage1Cards() {
                 <h1>Your adventure leads you to Stage One!</h1>
             </Jumbotron>
             <Row>
-                <Col xs={6} md={4}>
+                <Col sm={4} md={3}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="player">
                             <Card.Img variant="top" src={player} />
@@ -174,7 +174,7 @@ function Stage1Cards() {
                         </Card>
                     </CardGroup>
                 </Col>
-                <Col xs={6} md={4}>
+                <Col xs={3} sm={4} md={6}>
                     {win &&
                         <div className="victory">
                             {win}
@@ -184,7 +184,7 @@ function Stage1Cards() {
                             {lose}
                         </div>}
                 </Col>
-                <Col xs={6} md={4}>
+                <Col  sm={4} md={3}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="enemy">
                             <Card.Img variant="top" src={monsterStats.image} />

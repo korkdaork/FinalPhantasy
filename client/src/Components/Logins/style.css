@@ -4,7 +4,7 @@ a.btn.btn-primary {
   border-color: antiquewhite;
 }
 
-#a.btn.btn-primary:hover {
+a.btn.btn-primary:hover {
   background-color: blue;
 }
 
@@ -26,10 +26,33 @@ a.btn.btn-primary:active {
   background-size: cover;
 }
 
+.form-group {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 label.form-label {
+  padding: 8px;
+  background-color: rgb(16, 5, 75);
+  border-radius: 3px;
   color: antiquewhite;
+  font-weight: bolder;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 form {
   padding-bottom: 100px;
+}
+
+button.btn.btn-primary {
+  background-color: rgb(16, 5, 75);
+  outline-color: antiquewhite;
+  border-color: antiquewhite;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+button.btn.btn-primary:hover {
+  background-color: blue;
 }
