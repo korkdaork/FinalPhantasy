@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Jumbotron from 'react-bootstrap/Jumbotron';
+import API from '../../Utils/API'
 
 import "./style.css"
+import { Alert } from "react-bootstrap";
 
 function Logins() {
 
-  // const [loadUser, setLoadUser] = useState({ email: "", password: "" });
+  const [loadUser, setLoadUser] = useState({ email: "", password: "" });
 
-  // Load all books and store them with setBooks
+  // // Load all books and store them with setBooks
 
-  // Loads all books and sets them to books
+  // // Loads all books and sets them to books
 
-  // Handles updating component state when the user types into the input field
+  // // Handles updating component state when the user types into the input field
+
+  function handleInputChanges(e) {
+    const name = e.target.name
+    const value = e.target.value
+
+    // model of useState name : "value"
+    setLoadUser({ ...loadUser, [name]: value })
+  }
 
   // likely to be in the signup than login
   // const { id } = useParams()
@@ -22,6 +32,23 @@ function Logins() {
   //     .then(res => setLoadUser(res.data))
   //     .catch(err => console.log(err));
   // }, [])
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    if (loadUser.email === "" || loadUser.password === "") {
+      alert("Invalid login")
+    }
+    else {
+      API.login(loadUser)
+        .then(res => {
+          if (res.data.success) {
+            window.location = "/main"
+          } else {
+            alert("Invalid Login")
+          }
+        })
+        .catch(err => console.log(err));
+    }
+  }
 
   // function handleBtnClick(event) {
   //   // Get the title of the clicked button
@@ -45,19 +72,19 @@ function Logins() {
         </p>
         <Button href="/signup">Sign up!</Button>
       </Jumbotron>
-      <Form>
+      <Form onSubmit={handleFormSubmit}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
+          <Form.Control type="email" placeholder="Enter email" onChange={handleInputChanges} name="email" />
 
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control type="password" placeholder="Password" onChange={handleInputChanges} name="password" />
         </Form.Group>
         <br />
-        <Button href="/main">Login</Button>
+        <Button type="submit">Login</Button>
         <br />
         <hr />
       </Form>

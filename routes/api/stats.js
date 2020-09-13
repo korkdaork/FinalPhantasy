@@ -9,7 +9,7 @@ router.route("/") //find out where it will be connecting to front end js
 // Matches with "/api/books/:id"
 router
     .route("/:id")
-    .get(FFController.findById)
+    .get(FFController.findStatsByUserId)
     .put(FFController.update)
     .delete(FFController.remove);
 

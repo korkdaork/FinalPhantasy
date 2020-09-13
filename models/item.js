@@ -10,6 +10,7 @@ const itemsSchema = new Schema({
     defense: Number,
     speed: Number,
     Category: Number,
+    userId: Object
 });
 
 const Item = mongoose.model("Item", itemsSchema);

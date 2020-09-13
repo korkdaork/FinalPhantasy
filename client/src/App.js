@@ -15,19 +15,19 @@ import DeveloperContext from './Utils/DeveloperContext';
 function App() {
   const [developerContext, setDeveloperContext]=
   useState({
-    gil: 500,
-    hp: 5,
-    attack: 5,
-    defense: 5,
-    speed: 5,
-    potion: 1
+    gilcontext: 500,
+    hpcontext: 5,
+    attackcontext: 5,
+    defensecontext: 5,
+    speedcontext: 5,
+    potioncontext: 1
 
   })
   function buyPotion(name, quantity){
     console.log("hit buy potion");
     console.log(quantity);
-    const newQuantity = developerContext[name] + quantity;
-    setDeveloperContext({...developerContext, name: newQuantity});
+    // const newQuantity = developerContext[name] + quantity;
+    setDeveloperContext({...developerContext, [name]: quantity});
   // function updateAttack(quantity){
   //   console.log("update attack");
   //   const newAttack= developerContext.attack + quantity;
