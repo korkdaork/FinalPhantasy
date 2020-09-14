@@ -3,10 +3,10 @@ import "./style.css";
 
 
 function Navbar(props) {
-    const links = ["Login", "Main Page", "Store", "Stage1", "Boss", "Defeat", "Victory"];
+    const links = ["Login", "Main", "Store", "Stage1", "Boss", "Defeat", "Victory"];
     const navLinks = links.map(link => {
         return (
-            <li><a href={"/" + link}>{link}</a></li>
+            <li><a href={"/" + link}>{link}</a><hr/></li>
         )
     });
 

@@ -8,7 +8,10 @@ const statsSchema = new Schema({
     defense: Number,
     speed: Number,
     potion: Number,
+    userId: Object
 });
+
+
 
 const Stats = mongoose.model("Stats", statsSchema);
 

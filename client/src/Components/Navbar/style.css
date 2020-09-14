@@ -16,6 +16,14 @@ a {
   color: antiquewhite;
 }
 
+ul {
+  text-align: center;
+}
+
 li {
-  display: flex;
+  padding-top: 20px;
+  display: inline-block;
+  font-size: larger;
+  font-weight: bold;
+  padding-right: 9px;
 }
