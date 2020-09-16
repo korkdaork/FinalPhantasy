@@ -17,9 +17,9 @@ import "./style.css";
 
 
 
-function Stores ({buyPotion}){
-  const {gilcontext, hpcontext, attackcontext, defensecontext, speedcontext, potioncontext } = useContext(DeveloperContext)
-
+function Stores (){
+  const {buyPotion, gilcontext, hpcontext, attackcontext, defensecontext, speedcontext, potioncontext } = useContext(DeveloperContext)
+  console.log (gilcontext);
   const [buttonAEnabled, setButtonAEnabled]=useState (true);
   const [buttonBEnabled, setButtonBEnabled]=useState(true);
   const [buttonCEnabled, setButtonCEnabled]=useState (true);

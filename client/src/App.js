@@ -21,29 +21,45 @@ function App() {
       attackcontext: 5,
       defensecontext: 5,
       speedcontext: 5,
-      potioncontext: 1
+      potioncontext: 1,
+
+      buyPotion: (name, quantity)=>{
+        setDeveloperContext({ ...developerContext, [name]: quantity });
+
+      }
 
     })
-  function buyPotion(name, quantity) {
-    console.log("hit buy potion");
-    console.log(quantity);
-    // const newQuantity = developerContext[name] + quantity;
-    setDeveloperContext({ ...developerContext, [name]: quantity });
-    // function updateAttack(quantity){
-    //   console.log("update attack");
-    //   const newAttack= developerContext.attack + quantity;
-    //   setDeveloperContext({...developerContext, attack: newAttack })
-    // }
-  }
+  // function buyPotion(name, quantity) {
+  //   console.log("hit buy potion");
+  //   console.log(quantity);
+  //   // const newQuantity = developerContext[name] + quantity;
+  //   setDeveloperContext({ ...developerContext, [name]: quantity });
+  //   // function updateAttack(quantity){
+  //   //   console.log("update attack");
+  //   //   const newAttack= developerContext.attack + quantity;
+  //   //   setDeveloperContext({...developerContext, attack: newAttack })
+  //   // }
+  // }
+  console.log("appjs");
+  console.log(developerContext);
+
   useEffect(
+    // console.log(developerContext);
     function () {
-      const userdata = API.getStat(1);
-      const useritem= API.getItem(1);
+      console.log("useeffect");
+      // const userdata = API.getStat();
+      // const useritem= API.getItem();
+      const userdata= {gil: 400,
+        hp: 30,
+        attack: 40,
+        defense: 50,
+        speed: 5,
+        potion: 1,}
       
-      if (userdata, useritem) {
+      if (userdata) {
         setDeveloperContext({
           ...developerContext, attackcontext: userdata.attack, defensecontext: userdata.defense,
-          gilcontext: userdata.gil, hpcontext: userdata.hp, potioncontext:useritem.potion
+          gilcontext: userdata.gil, hpcontext: userdata.hp, potioncontext:userdata.potion
         })
       }
     },[]
@@ -58,7 +74,7 @@ function App() {
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/Main" component={Main} />
           <Route exact path="/Store" render={(props) =>
-            (<Store {...props} buyPotion={buyPotion} />)} />
+            (<Store {...props}  />)} />
           <Route exact path="/Stage1" component={Stage1} />
           <Route exact path="/Boss" component={Boss} />
           <Route exact path="/Defeat" component={Defeat} />
