@@ -195,7 +195,7 @@ function Stage1Cards() {
     return (
         <Container-fluid>
             <Jumbotron>
-                <h1>Your adventure leads you to Stage One!</h1>
+                <h2>Your adventure leads you to Stage One!</h2>
             </Jumbotron>
             <Row>
                 <Col sm={4} md={3}>

@@ -129,7 +129,7 @@ function BossCards() {
     return (
         <Container-fluid>
             <Jumbotron>
-                <h1>Your adventure leads you to the Boss Fight!</h1>
+                <h2>Your adventure leads you to the Boss Fight!</h2>
             </Jumbotron>
             <Row>
                 <Col xs={6} md={4}>
