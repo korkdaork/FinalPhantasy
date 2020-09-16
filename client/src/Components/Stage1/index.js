@@ -183,7 +183,7 @@ function Stage1Cards() {
     };
 
     const handleRun = () => {
-        setRun("You Run away like a Coward!", setTimeout(function () {
+        setRun("You Run away like a COWARD!", setTimeout(function () {
             window.location = "/Defeat"
         }, 2000));
     };
@@ -212,7 +212,7 @@ function Stage1Cards() {
                                 <ListGroupItem><b>HP:</b> {tempPlayerStats.hp}</ListGroupItem>
                                 <ListGroupItem><b>Attack:</b> {tempPlayerStats.attack}</ListGroupItem>
                                 <ListGroupItem><b>Defense:</b> {tempPlayerStats.defense}</ListGroupItem>
-                                <ListGroupItem><b>Potion:</b> {tempPlayerStats.potion}</ListGroupItem>
+                                <ListGroupItem><b>Potions:</b> {tempPlayerStats.potion}</ListGroupItem>
                                 <ListGroupItem><b>Gil:</b> {tempPlayerStats.gil}</ListGroupItem>
                             </ListGroup>
                             <ListGroup className="list-group-flush" position="center">
@@ -233,7 +233,7 @@ function Stage1Cards() {
                         <div className="victory">
                             {win}
                             <div>
-                                <Button variant="primary" size="lg" href={"/" + "Boss"}>Continue the Adventure</Button>
+                                <Button className="nextStage" variant="primary" size="lg" href={"/" + "Boss"}>Continue the Adventure</Button>
                             </div>
                         </div>}
                     {lose &&

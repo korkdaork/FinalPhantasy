@@ -23,7 +23,7 @@ function BossCards() {
             attack: 9999,
             defense: 9999,
             gil: 9999,
-            intro: "There is one SOLDIER named Sephiroth, who is a tall man with a muscular build. He wears a long black coat with silver pauldrons, black boots and black trousers. The top of his coat is open to reveal his chest, with his leather SOLDIER suspenders crossed over it. Sephiroth's long silver hair has bangs parted to either side of his face. He is better than the rest of SOLDIER, but when he found out about the terrible experiments that made him, he began to hate Shinra. And then, over time, he began to hate everything.",
+            intro: "There is one SOLDIER named Sephiroth, who is a tall man with a muscular build. He wears a long black coat with silver pauldrons, black boots and black trousers. The top of his coat is open to reveal his chest, with his leather SOLDIER suspenders crossed over it. Sephiroth's long silver hair has bangs parted to either side of his face. When he found out about the terrible experiments that made him, he began to hate Shinra. Over time, he began to hate everything - including YOU!",
             image: sephiroth
         }
     ]
@@ -149,7 +149,7 @@ function BossCards() {
                                 <ListGroupItem><b>HP:</b> {tempPlayerStats.hp}</ListGroupItem>
                                 <ListGroupItem><b>Attack:</b> {tempPlayerStats.attack}</ListGroupItem>
                                 <ListGroupItem><b>Defense:</b> {tempPlayerStats.defense}</ListGroupItem>
-                                <ListGroupItem><b>Potion:</b> {tempPlayerStats.potion}</ListGroupItem>
+                                <ListGroupItem><b>Potions:</b> {tempPlayerStats.potion}</ListGroupItem>
                                 <ListGroupItem><b>Gil:</b> {tempPlayerStats.gil}</ListGroupItem>
                             </ListGroup>
                             <ListGroup className="list-group-flush" position="center">
