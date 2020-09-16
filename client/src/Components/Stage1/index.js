@@ -208,18 +208,18 @@ function Stage1Cards() {
                                     Prepare to fight the monster in front of you!
                                 </Card.Text>
                             </Card.Body>
-                            <ListGroup className="list-group-flush stats">
-                                <ListGroupItem>HP: {tempPlayerStats.hp}</ListGroupItem>
-                                <ListGroupItem>Attack: {tempPlayerStats.attack}</ListGroupItem>
-                                <ListGroupItem>Defense: {tempPlayerStats.defense}</ListGroupItem>
-                                <ListGroupItem>Potion: {tempPlayerStats.potion}</ListGroupItem>
-                                <ListGroupItem>Gil: {tempPlayerStats.gil}</ListGroupItem>
+                            <ListGroup horizontal className="stats">
+                                <ListGroupItem><b>HP:</b> {tempPlayerStats.hp}</ListGroupItem>
+                                <ListGroupItem><b>Attack:</b> {tempPlayerStats.attack}</ListGroupItem>
+                                <ListGroupItem><b>Defense:</b> {tempPlayerStats.defense}</ListGroupItem>
+                                <ListGroupItem><b>Potion:</b> {tempPlayerStats.potion}</ListGroupItem>
+                                <ListGroupItem><b>Gil:</b> {tempPlayerStats.gil}</ListGroupItem>
                             </ListGroup>
-                            <ListGroup className="list-group-flush">
-                                <ListGroupItem><Button variant="danger" onClick={handleAttack}>Attack</Button></ListGroupItem>
-                                <ListGroupItem><Button variant="warning" onClick={handleGuard}>Guard</Button></ListGroupItem>
-                                <ListGroupItem><Button variant="success" onClick={handlePotion}>Potion</Button></ListGroupItem>
-                                <ListGroupItem><Button variant="info" onClick={handleRun} >Run!</Button></ListGroupItem>
+                            <ListGroup className="list-group-flush" position="center">
+                                <ListGroupItem><Button variant="danger" size="lg" onClick={handleAttack}>Attack</Button>
+                                    <Button variant="warning" size="lg" onClick={handleGuard}>Guard</Button>
+                                    <Button variant="success" size="lg" onClick={handlePotion}>Potion</Button>
+                                    <Button variant="info" size="lg" onClick={handleRun} >Run!</Button></ListGroupItem>
                             </ListGroup>
                             {/* <Card.Body>
                                 <Card.Link href="#">Card Link</Card.Link>
@@ -232,9 +232,9 @@ function Stage1Cards() {
                     {win &&
                         <div className="victory">
                             {win}
-                            <h1>
+                            <div>
                                 <Button variant="primary" size="lg" href={"/" + "Boss"}>Continue the Adventure</Button>
-                            </h1>
+                            </div>
                         </div>}
                     {lose &&
                         <div className="loser">
@@ -255,10 +255,10 @@ function Stage1Cards() {
                                     {monsterStats.intro}
                                 </Card.Text>
                             </Card.Body>
-                            <ListGroup className="list-group-flush stats">
-                                <ListGroupItem>HP: {monsterStats && monsterStats.hp}</ListGroupItem>
-                                <ListGroupItem>Attack: {monsterStats && monsterStats.attack}</ListGroupItem>
-                                <ListGroupItem>Defense: {monsterStats && monsterStats.defense}</ListGroupItem>
+                            <ListGroup horizontal className="stats">
+                                <ListGroupItem><b>HP:</b> {monsterStats && monsterStats.hp}</ListGroupItem>
+                                <ListGroupItem><b>Attack:</b> {monsterStats && monsterStats.attack}</ListGroupItem>
+                                <ListGroupItem><b>Defense:</b> {monsterStats && monsterStats.defense}</ListGroupItem>
                             </ListGroup>
                             {/* <Card.Body>
                                 <Card.Link href="#">Card Link</Card.Link>
