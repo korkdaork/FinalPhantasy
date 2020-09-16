@@ -50,7 +50,7 @@ function Stage1Cards() {
         },
         {
             name: "Yevzilla",
-            hp: 500,
+            hp: 200,
             attack: 45,
             defense: 5,
             gil: 200,
@@ -183,7 +183,7 @@ function Stage1Cards() {
     };
 
     const handleRun = () => {
-        setRun("You Run away like a Coward!", setTimeout(function () {
+        setRun("Run Away!", setTimeout(function () {
             window.location = "/Defeat"
         }, 2000));
     };
@@ -192,20 +192,20 @@ function Stage1Cards() {
     return (
         <Container-fluid>
             <Jumbotron>
-                <h1>Your adventure leads you to Stage One!</h1>
+                <h2>Your adventure leads you to Stage One!</h2>
             </Jumbotron>
             <Row>
-                <Col sm={4} md={3}>
+                <Col xs={6} md={4}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="player">
                             <Card.Img variant="top" src={player} />
                             <Card.Body>
                                 <Card.Title>{tempPlayerStats.name}</Card.Title>
                                 <Card.Text>
-                                    You draw your Great Sword of Leeching (small chance to heal yourself during combat)!
+                                    Prepare to Fight!
                                     <br />
                                     <br />
-                                    Prepare to fight the monster in front of you!
+                                   
                                 </Card.Text>
                             </Card.Body>
                             <ListGroup className="list-group-flush stats">
@@ -228,7 +228,7 @@ function Stage1Cards() {
                         </Card>
                     </CardGroup>
                 </Col>
-                <Col xs={3} sm={4} md={6}>
+                <Col xs={6} md={4}>
                     {win &&
                         <div className="victory">
                             {win}
@@ -245,7 +245,7 @@ function Stage1Cards() {
                             {run}
                         </div>}
                 </Col>
-                <Col sm={4} md={3}>
+                <Col xs={6} md={4}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="enemy">
                             <Card.Img variant="top" src={monsterStats.image} />

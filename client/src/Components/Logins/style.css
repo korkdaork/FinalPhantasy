@@ -19,13 +19,6 @@ a.btn.btn-primary:active {
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.container-fluid {
-  background-image: url('../../Assets/background.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .form-group {
   padding-left: 20px;
   padding-right: 20px;
@@ -49,6 +42,7 @@ button.btn.btn-primary {
   background-color: rgb(16, 5, 75);
   outline-color: antiquewhite;
   border-color: antiquewhite;
+  margin-left: 25px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

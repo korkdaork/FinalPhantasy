@@ -17,6 +17,7 @@ function Mains() {
                 <Button href="/store">Begin Adventure</Button>
             </p>
         </Jumbotron>
+        
     );
 }
 

@@ -6,12 +6,13 @@ import "./style.css";
 function Victories (){
     return (
         <Jumbotron>
-        <h1>Victory</h1>
+        <div class = 'container projects'>
+            <h1 class = "win">VICTORY</h1>
+            <div class="overlay"></div>
+            
+        </div>
         <p>
-            You have been victorious, clearly you were powerful enough to win!
-        </p>
-        <p>
-            <Button href="/store">Try Again?</Button>
+                <Button href="/store">Try Again?</Button>
         </p>
     </Jumbotron>
     )
