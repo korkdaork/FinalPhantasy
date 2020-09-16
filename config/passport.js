@@ -4,7 +4,8 @@ const Strategy = require("passport-local").Strategy;
 // load up the user model
 var User = require('../models/user');
 
-passport.use(new Strategy((email, password, done) => {
+passport.use(new Strategy({ usernameField: "email" }, (email, password, done) => {
+  console.log("passport hit")
   User.findOne({ email: email }, (err, user) => {
 
     // If any error
@@ -16,7 +17,7 @@ passport.use(new Strategy((email, password, done) => {
       })
     }
 
-    user.login(password).then(() => {
+    user.comparePassword(password).then(() => {
       return done(null, user)
     }).catch((err) => {
       return done(err, false, {

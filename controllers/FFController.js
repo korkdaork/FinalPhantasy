@@ -43,8 +43,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findStatsByUserId: function (req, res) {
+    console.log(req.user)
     db.Stats
-      .findOne({ userId: Object(req.params.id) })
+      .findOne({ userId: Object(req.user.id) })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

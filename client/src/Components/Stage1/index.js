@@ -122,13 +122,15 @@ function Stage1Cards() {
 
     // ================================ USER/PLAYER LOGIC & INFO =====================================
     // --------------------- Will pull info from db -------------------------------------
-    const [userStats, setUserStats] = useState();
-
+    const [userStats, setUserStats] = useState({
+        name: "", hp: "", attack: "", defense: "", potion: "", gil: ""
+    });
+    console.log(userStats)
     useEffect(() => {
         const userId = localStorage.getItem("userId");
         API.getStat(userId).then(res => {
-            setUserStats(res.data)
-            console.log(res.data)
+            // setUserStats(res.data)
+            console.log(res)
         });
     }, []);
 
@@ -201,7 +203,7 @@ function Stage1Cards() {
                         <Card style={{ width: '18rem' }} className="player">
                             <Card.Img variant="top" src={player} />
                             <Card.Body>
-                                <Card.Title>{userStats.name}</Card.Title>
+                                <Card.Title>{userStats && userStats.name}</Card.Title>
                                 <Card.Text>
                                     You draw your Great Sword of Leeching (small chance to heal yourself during combat)!
                                     <br />
@@ -210,9 +212,9 @@ function Stage1Cards() {
                                 </Card.Text>
                             </Card.Body>
                             <ListGroup horizontal className="stats">
-                                <ListGroupItem><b>HP:</b> {userStats.hp}</ListGroupItem>
-                                <ListGroupItem><b>Attack:</b> {userStats.attack}</ListGroupItem>
-                                <ListGroupItem><b>Defense:</b> {userStats.defense}</ListGroupItem>
+                                <ListGroupItem><b>HP:</b> {userStats && userStats.hp}</ListGroupItem>
+                                <ListGroupItem><b>Attack:</b> {userStats && userStats.attack}</ListGroupItem>
+                                <ListGroupItem><b>Defense:</b> {userStats && userStats.defense}</ListGroupItem>
                                 <ListGroupItem><b>Potions:</b> {userStats.potion}</ListGroupItem>
                                 <ListGroupItem><b>Gil:</b> {userStats.gil}</ListGroupItem>
                             </ListGroup>

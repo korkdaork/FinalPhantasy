@@ -49,6 +49,7 @@ export default {
   login: function (credentials) {
     return axios.post("/api/login", credentials)
   },
+
   // Deletes the book with the given id
   deleteUser: function (id) {
     return axios.delete("/api/user/" + id);
