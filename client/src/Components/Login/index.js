@@ -61,6 +61,6 @@ function Logins() {
       </Form>
     </div>
   );
-}
+
 
 export default Logins;
