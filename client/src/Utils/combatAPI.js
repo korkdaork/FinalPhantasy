@@ -2,7 +2,7 @@
 export default {
 
     attack: function (userAtk, monsterHP, monsterDef) {
-        return monsterHP -= userAtk - monsterDef;
+        return monsterHP -= userAtk - monsterDef; //issue found with defense being higher than attack, making attack heal.
     },
 
     guard: function (userHP, userDef, monsterAtk) {
@@ -19,6 +19,10 @@ export default {
 
     monsterRet: function (userHP, userDef, monsterAtk) {
         return userHP -= monsterAtk - userDef;
+    },
+
+    reducePotions: function (userPotion) {
+        return userPotion - 1;
     }
 
 };

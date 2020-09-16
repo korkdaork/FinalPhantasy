@@ -11,6 +11,7 @@ import health from "../../Assets/potion.png";
 import light from "../../Assets/lightarmor.png";
 import heavy from "../../Assets/heavyarmor.png";
 import DeveloperContext from "../../Utils/DeveloperContext";
+import API from "../../Utils/API";
 import "./style.css";
 
 
@@ -44,8 +45,8 @@ function Stores ({buyPotion}){
     setButtonBEnabled(false);
     setButtonCEnabled(false);
     console.log (attack, defense, speed, gil);
-    numAttack=numAttack+3;
-    numDefense=numDefense+5;
+    numAttack=numAttack+25;
+    numDefense=numDefense+10;
     numSpeed=numSpeed+5;
     numGil=gilcontext-5;
     setAttack(numAttack);
@@ -56,15 +57,18 @@ function Stores ({buyPotion}){
     buyPotion("defensecontext",numDefense);
     buyPotion("speedcontext", numSpeed);
     buyPotion("gilcontext", numGil);
+    const swordstat={attack:numAttack, defense:numDefense, gil:numGil};
+    API.saveStat(swordstat);
   }
+
 
   const handleButtonBPressed = () => {
     setButtonAEnabled(false);
     setButtonBEnabled(false);
     setButtonCEnabled(false);
     console.log (attack, defense, speed, gil);
-    numAttack=numAttack+4;
-    numDefense=numDefense+3;
+    numAttack=numAttack+35;
+    numDefense=numDefense+8;
     numSpeed=numSpeed+3;
     numGil=gilcontext-5;
     setAttack(numAttack);
@@ -75,14 +79,16 @@ function Stores ({buyPotion}){
     buyPotion("defensecontext",numDefense);
     buyPotion("speedcontext", numSpeed);
     buyPotion("gilcontext", numGil);
+    const axestat={attack:numAttack,defense:numDefense, gil:numGil};
+    API.saveStat(axestat);
   }
   const handleButtonCPressed = () =>{
     setButtonAEnabled(false);
     setButtonBEnabled(false);
     setButtonCEnabled(false);
     console.log (attack, defense, speed, gil);
-    numAttack=numAttack+5;
-    numDefense=numDefense+2;
+    numAttack=numAttack+45;
+    numDefense=numDefense+5;
     numSpeed=numSpeed+2;
     numGil=gilcontext-5;
     setAttack(numAttack);
@@ -93,12 +99,14 @@ function Stores ({buyPotion}){
     buyPotion("defensecontext",numDefense);
     buyPotion("speedcontext", numSpeed);
     buyPotion("gilcontext", numGil);
+    const macestat={attack:numAttack, defense:numDefense, gil:numGil};
+    API.saveStat(macestat);
   }
   const handleButtonDPressed = () =>{
     console.log(potion)
     let numPotions=potion;
     numPotions=numPotions +1;
-    numGil=gilcontext -10;
+    numGil=gilcontext -50;
     if (numPotions === 5) {
       setPotionButton(true)
     }
@@ -106,16 +114,21 @@ function Stores ({buyPotion}){
     setButtonDEnabled(false);
     buyPotion("potioncontext",numPotions);
     buyPotion("gilcontext", numGil);
+    const potionstat={gil:numGil};
+    const potionitem={potion:numPotions};
+    API.saveStat(potionstat);
+    API.saveItem(potionitem);
+
   }
   const handleButtonEPressed= ()=>{
     setButtonEEnabled(false);
     setButtonFEnabled(false);
     console.log (hp, attack, defense, speed, gil);
-    numHp=numHp+15;
+    numHp=numHp+50;
     numAttack=numAttack+0;
     numDefense=numDefense+20;
     numSpeed=numSpeed-3;
-    numGil=gilcontext-15;
+    numGil=gilcontext-150;
     setHp(numHp)
     setAttack(numAttack);
     setDefense(numDefense);
@@ -126,16 +139,18 @@ function Stores ({buyPotion}){
     buyPotion("defensecontext",numDefense);
     buyPotion("speedcontext", numSpeed);
     buyPotion("gilcontext", numGil);
+    const lightstat={hp:numHp, attack:numAttack, defense:numDefense,gil:numGil};
+    API.saveStat(lightstat);
   }
   const handleButtonFPressed = ()=>{
     setButtonEEnabled(false);
     setButtonFEnabled(false);
     console.log (hp, attack, defense, speed, gil);
-    numHp=numHp+30;
+    numHp=numHp+35;
     numAttack=numAttack+0;
     numDefense=numDefense+50;
     numSpeed=numSpeed-10;
-    numGil=gilcontext-25;
+    numGil=gilcontext-200;
     setHp(numHp)
     setAttack(numAttack);
     setDefense(numDefense);
@@ -146,6 +161,9 @@ function Stores ({buyPotion}){
     buyPotion("defensecontext",numDefense);
     buyPotion("speedcontext", numSpeed);
     buyPotion("gilcontext", numGil);
+    const heavystat={hp:numHp, attack:numAttack, defense:numDefense,gil:numGil};
+    API.saveStat(heavystat);
+
   }
 
   return (
@@ -174,10 +192,10 @@ function Stores ({buyPotion}){
               <Card.Title id="sword">Sword </Card.Title>
               <Card.Text>
                 <ListGroup>
-                  <ListGroup.Item>Attack: 3</ListGroup.Item>
-                  <ListGroup.Item>Defense: 5</ListGroup.Item>
+                  <ListGroup.Item>Attack: 25</ListGroup.Item>
+                  <ListGroup.Item>Defense: 10</ListGroup.Item>
                   <ListGroup.Item>Speed: 5</ListGroup.Item>
-                  <ListGroup.Item>Gil: 5</ListGroup.Item>
+                  <ListGroup.Item>Gil: 30</ListGroup.Item>
                 </ListGroup>
               </Card.Text>
             </Card.Body>
@@ -194,10 +212,10 @@ function Stores ({buyPotion}){
               <Card.Title id="axe" >Axe </Card.Title>
               <Card.Text>
                 <ListGroup>
-                  <ListGroup.Item>Attack: 4</ListGroup.Item>
-                  <ListGroup.Item>Defense: 3</ListGroup.Item>
+                  <ListGroup.Item>Attack: 35</ListGroup.Item>
+                  <ListGroup.Item>Defense: 8</ListGroup.Item>
                   <ListGroup.Item>Speed: 3</ListGroup.Item>
-                  <ListGroup.Item>Gil: 5</ListGroup.Item>
+                  <ListGroup.Item>Gil: 50</ListGroup.Item>
                 </ListGroup>
               </Card.Text>
             </Card.Body>
@@ -214,10 +232,10 @@ function Stores ({buyPotion}){
               <Card.Title id="hammer">Mace </Card.Title>
               <Card.Text>
                 <ListGroup>
-                  <ListGroup.Item>Attack: 5</ListGroup.Item>
-                  <ListGroup.Item>Defense: 2</ListGroup.Item>
+                  <ListGroup.Item>Attack: 45</ListGroup.Item>
+                  <ListGroup.Item>Defense: 5</ListGroup.Item>
                   <ListGroup.Item>Speed: 2</ListGroup.Item>
-                  <ListGroup.Item>Gil: 5</ListGroup.Item>
+                  <ListGroup.Item>Gil: 75</ListGroup.Item>
                 </ListGroup>
               </Card.Text>
             </Card.Body>
@@ -233,8 +251,8 @@ function Stores ({buyPotion}){
               <Card.Title id="potion">Potion </Card.Title>
               <Card.Text>
                 <ListGroup>
-                  <ListGroup.Item>HP+: 20</ListGroup.Item>
-                  <ListGroup.Item>Gil: 10</ListGroup.Item>
+                  <ListGroup.Item>HP+: 50</ListGroup.Item>
+                  <ListGroup.Item>Gil: 50</ListGroup.Item>
                 </ListGroup>
               </Card.Text>
             </Card.Body>
@@ -250,11 +268,11 @@ function Stores ({buyPotion}){
               <Card.Title id="light">Light Armor </Card.Title>
               <Card.Text>
                 <ListGroup>
-                  <ListGroup.Item>HP: 15</ListGroup.Item>
+                  <ListGroup.Item>HP: 50</ListGroup.Item>
                   <ListGroup.Item>Attack: 0</ListGroup.Item>
                   <ListGroup.Item>Defense: 20</ListGroup.Item>
                   <ListGroup.Item>Speed: -3</ListGroup.Item>
-                  <ListGroup.Item>Gil: 15</ListGroup.Item>
+                  <ListGroup.Item>Gil: 150</ListGroup.Item>
                 </ListGroup>
               </Card.Text>
             </Card.Body>
@@ -270,11 +288,11 @@ function Stores ({buyPotion}){
               <Card.Title id="heavy">Heavy Armor </Card.Title>
               <Card.Text>
                 <ListGroup>
-                  <ListGroup.Item>HP: 30</ListGroup.Item>
+                  <ListGroup.Item>HP: 35</ListGroup.Item>
                   <ListGroup.Item>Attack: 0</ListGroup.Item>
                   <ListGroup.Item>Defense: 50</ListGroup.Item>
                   <ListGroup.Item>Speed: -10</ListGroup.Item>
-                  <ListGroup.Item>Gil: 25</ListGroup.Item>
+                  <ListGroup.Item>Gil: 200</ListGroup.Item>
                 </ListGroup>
               </Card.Text>
             </Card.Body>
