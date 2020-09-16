@@ -35,7 +35,13 @@ function Signups() {
             newUser //not making a new object so {} is not necessary
 
         )
-            .then(res => console.log(res))
+            .then(res => {
+                if (res.data.success) {
+                    window.location = "/main"
+                } else {
+                    alert("Invalid Login")
+                }
+            })
             .catch(err => console.log(err));
         // }
     };
