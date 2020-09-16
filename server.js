@@ -25,7 +25,9 @@ app.post('/login',
   })
 );
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/FFProject");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/FFProject").then(() => {
+  console.log("Connected to MongoDB")
+});
 
 app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

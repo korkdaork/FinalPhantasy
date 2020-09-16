@@ -45,6 +45,10 @@ export default {
   getUser: function (id) {
     return axios.get("/api/user/" + id);
   },
+
+  login: function (credentials) {
+    return axios.post("/api/login", credentials)
+  },
   // Deletes the book with the given id
   deleteUser: function (id) {
     return axios.delete("/api/user/" + id);
@@ -53,4 +57,5 @@ export default {
   saveUser: function (saveData) {
     return axios.post("/api/user", saveData);
   }
+
 };
