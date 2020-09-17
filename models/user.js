@@ -11,6 +11,14 @@ const userSchema = new Schema({
     // The password cannot be null
     password: {
         type: String
+    },
+
+    firstName: {
+        type: String
+    },
+
+    lastName: {
+        type: String
     }
     // tokens: [{
     //     token: {
@@ -49,27 +57,27 @@ const userSchema = new Schema({
 //         throw new Error({ error: 'Invalid login credentials' })
 //     }
 //     return user
-// }
+// // }
 
-// userSchema.pre('save', function (next) {
-//     var user = this;
-//     if (this.isModified('password') || this.isNew) {
-//         bcrypt.genSalt(10, function (err, salt) {
-//             if (err) {
-//                 return next(err);
-//             }
-//             bcrypt.hash(user.password, salt, null, function (err, hash) {
-//                 if (err) {
-//                     return next(err);
-//                 }
-//                 user.password = hash;
-//                 next();
-//             });
-//         });
-//     } else {
-//         return next();
-//     }
-// });
+userSchema.pre('save', function (next) {
+    var user = this;
+    if (this.isModified('password') || this.isNew) {
+        bcrypt.genSalt(10, function (err, salt) {
+            if (err) {
+                return next(err);
+            }
+            bcrypt.hash(user.password, salt, null, function (err, hash) {
+                if (err) {
+                    return next(err);
+                }
+                user.password = hash;
+                next();
+            });
+        });
+    } else {
+        return next();
+    }
+});
 
 userSchema.methods.comparePassword = function (passw, cb) {
     bcrypt.compare(passw, this.password, function (err, isMatch) {

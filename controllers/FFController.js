@@ -21,12 +21,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  update: function (req, res) {
-    db.Item
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+  // update: function (req, res) {
+  //   db.Item
+  //     .findOneAndUpdate({ _id: req.params.id }, req.body)
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
   remove: function (req, res) {
     db.Item
       .findById({ _id: req.params.id })
@@ -43,9 +43,10 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findStatsByUserId: function (req, res) {
+    console.log(req.params.id)
     db.Stats
-      .findOne({ userId: Object(req.params.id) })
-      .then(dbModel => res.json(dbModel))
+      .findOne({ userId: req.params.id })
+      .then(dbModel => { console.log(dbModel); res.json(dbModel) })
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
@@ -55,9 +56,11 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function (req, res) {
+    console.log(req.params.id)
+    console.log(req.body)
     db.Stats
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
+      .findOneAndUpdate({ userId: req.params.id }, req.body, { new: true, upsert: true })
+      .then(dbModel => { console.log(dbModel); res.json(dbModel) })
       .catch(err => res.status(422).json(err));
   },
   remove: function (req, res) {
@@ -86,19 +89,19 @@ module.exports = {
       .create(req.body)
       .then(() => {
         console.log(req.body, "here's the req")
-        res.redirect(307, "/api/login");
+        res.status(200);
       })
       .catch(err => {
         console.log("create user fail")
         res.status(422).json(err)
       });
   },
-  update: function (req, res) {
-    db.User
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+  // update: function (req, res) {
+  //   db.User
+  //     .findOneAndUpdate({ _id: req.params.id }, req.body)
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
   remove: function (req, res) {
     db.User
       .findById({ _id: req.params.id })
