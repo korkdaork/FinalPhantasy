@@ -8,7 +8,7 @@ const statsSchema = new Schema({
     defense: Number,
     speed: Number,
     potion: Number,
-    userId: Object
+    userId: String
 });
 
 

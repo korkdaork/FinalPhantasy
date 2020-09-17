@@ -34,8 +34,10 @@ export default {
   },
   // Saves a book to the database
   saveStat: function (statData) {
-    // return axios.post("/api/stats", statData);
     localStorage.setItem("userstats", JSON.stringify(statData));
+    const userId = localStorage.getItem("id")
+    console.log(statData)
+    return axios.put("/api/stats/" + userId, statData);
   },
   // Gets all users
   getUsers: function () {

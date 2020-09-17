@@ -17,12 +17,14 @@ passport.use(new Strategy({ usernameField: "email" }, (email, password, done) =>
       })
     }
 
-    user.comparePassword(password).then(() => {
+    user.comparePassword(password, (err, isMatch) => {
+      console.log(err)
+      if (err) {
+        return done(err, false, {
+          message: 'Password not matched.'
+        })
+      } console.log(isMatch)
       return done(null, user)
-    }).catch((err) => {
-      return done(err, false, {
-        message: 'Password not matched.'
-      })
     })
   })
 }))

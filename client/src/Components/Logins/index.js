@@ -41,6 +41,9 @@ function Logins() {
       API.login(loadUser)
         .then(res => {
           if (res.data.success) {
+            localStorage.setItem("id", res.data.id);
+            localStorage.setItem("firstName", res.data.firstName);
+            localStorage.setItem("lastName", res.data.lastName);
             window.location = "/main"
           } else {
             alert("Invalid Login")

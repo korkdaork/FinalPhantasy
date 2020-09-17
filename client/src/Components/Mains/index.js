@@ -4,11 +4,12 @@ import Button from 'react-bootstrap/Button'
 import "./style.css";
 
 function Mains() {
+    const fullName = localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")
     return (
         <Jumbotron>
             <h1>Final Phantasy</h1>
             <p>
-                Welcome adventurer to Final Phantasy, a game inspired by the Final Fantasy Series.
+                Welcome {fullName} to Final Phantasy, a game inspired by the Final Fantasy Series.
                 Here you will battle foes found in that popular series and a boss so heinous,
                 his name can not be spoken!  Are you ready for battle? If so click the button below to
                 proceed to the store where you can buy equipment and items to aid you on your journey.

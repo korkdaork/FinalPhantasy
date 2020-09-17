@@ -123,13 +123,14 @@ function Stage1Cards() {
     // ================================ USER/PLAYER LOGIC & INFO =====================================
     // --------------------- Will pull info from db -------------------------------------
     const [userStats, setUserStats] = useState({
-        name: "", hp: "", attack: "", defense: "", potion: "", gil: ""
+        name: localStorage.getItem("firstName"), hp: "", attack: "", defense: "", potion: "", gil: ""
     });
+
     console.log(userStats)
     useEffect(() => {
-        const userId = localStorage.getItem("userId");
+        const userId = localStorage.getItem("id");
         API.getStat(userId).then(res => {
-            // setUserStats(res.data)
+            setUserStats(res.data)
             console.log(res)
         });
     }, []);
