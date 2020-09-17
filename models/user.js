@@ -11,6 +11,14 @@ const userSchema = new Schema({
     // The password cannot be null
     password: {
         type: String
+    },
+
+    firstName: {
+        type: String
+    },
+
+    lastName: {
+        type: String
     }
     // tokens: [{
     //     token: {
@@ -49,7 +57,7 @@ const userSchema = new Schema({
 //         throw new Error({ error: 'Invalid login credentials' })
 //     }
 //     return user
-// }
+// // }
 
 userSchema.pre('save', function (next) {
     var user = this;

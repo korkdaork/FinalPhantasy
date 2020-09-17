@@ -122,45 +122,49 @@ function Stage1Cards() {
 
     // ================================ USER/PLAYER LOGIC & INFO =====================================
     // --------------------- Will pull info from db -------------------------------------
-    const [userStats, setUserStats] = useState();
+    const [userStats, setUserStats] = useState({
+        name: localStorage.getItem("firstName"), hp: "", attack: "", defense: "", potion: "", gil: ""
+    });
 
-    // useEffect(() => {
-    //     const userId = localStorage.getItem("userId");
-    //     API.getStat(userId).then(res => {
-    //         setUserStats(res.data)
-    //     });
-    // }, []);
+    console.log(userStats)
+    useEffect(() => {
+        const userId = localStorage.getItem("id");
+        API.getStat(userId).then(res => {
+            setUserStats(res.data)
+            console.log(res)
+        });
+    }, []);
 
     // ==================================== COMBAT LOGIC =======================================
     const handleAttack = () => {
         console.log("attack")
-        const monsterHitPoints = combatAPI.attack(tempPlayerStats.attack, monsterStats.hp, monsterStats.defense);
+        const monsterHitPoints = combatAPI.attack(userStats.attack, monsterStats.hp, monsterStats.defense);
         if (monsterHitPoints <= 0) {
             setWin("You Win");
             //add user gil after defeating monster
         } else {
             setMonsterStats({ ...monsterStats, hp: monsterHitPoints });
-            const playerHitPoints = combatAPI.monsterRet(tempPlayerStats.hp, tempPlayerStats.defense, monsterStats.attack);
+            const playerHitPoints = combatAPI.monsterRet(userStats.hp, userStats.defense, monsterStats.attack);
             if (playerHitPoints <= 0) {
                 setLose("You Lose", setTimeout(function () {
                     window.location = "/Defeat"
                 }, 2000));
             } else {
-                setTempPlayerStats({ ...tempPlayerStats, hp: playerHitPoints })
+                setUserStats({ ...userStats, hp: playerHitPoints })
             };
         };
     };
 
     const handleGuard = () => {
         console.log("guard")
-        const playerHitPoints = combatAPI.guard(tempPlayerStats.hp, tempPlayerStats.defense, monsterStats.attack);
+        const playerHitPoints = combatAPI.guard(userStats.hp, userStats.defense, monsterStats.attack);
         if (playerHitPoints <= 0) {
             setLose("You Lose", setTimeout(function () {
                 window.location = "/Defeat"
             }, 2000));
         } else {
-            setTempPlayerStats({ ...tempPlayerStats, hp: playerHitPoints });
-            const monsterHitPoints = combatAPI.attack(tempPlayerStats.attack, monsterStats.hp, monsterStats.defense);
+            setUserStats({ ...userStats, hp: playerHitPoints });
+            const monsterHitPoints = combatAPI.attack(userStats.attack, monsterStats.hp, monsterStats.defense);
             if (monsterHitPoints <= 0) {
                 setWin("You Win");
                 //add user gil after defeating monster
@@ -173,17 +177,17 @@ function Stage1Cards() {
 
     const handlePotion = () => {
         console.log("potion")
-        const playerHitPoints = combatAPI.usePotion(tempPlayerStats.hp);
-        if (tempPlayerStats.potion >= 1) {
-            const playerPotions = combatAPI.reducePotions(tempPlayerStats.potion);
-            setTempPlayerStats({ ...tempPlayerStats, hp: playerHitPoints, potion: playerPotions });
+        const playerHitPoints = combatAPI.usePotion(userStats.hp);
+        if (userStats.potion >= 1) {
+            const playerPotions = combatAPI.reducePotions(userStats.potion);
+            setUserStats({ ...userStats, hp: playerHitPoints, potion: playerPotions });
         } else {
             //need to block out the potions button - look at store code
         }
     };
 
     const handleRun = () => {
-        setRun("You Run away like a Coward!", setTimeout(function () {
+        setRun("You Run away like a COWARD!", setTimeout(function () {
             window.location = "/Defeat"
         }, 2000));
     };
@@ -192,7 +196,7 @@ function Stage1Cards() {
     return (
         <Container-fluid>
             <Jumbotron>
-                <h1>Your adventure leads you to Stage One!</h1>
+                <h2>Your adventure leads you to Stage One!</h2>
             </Jumbotron>
             <Row>
                 <Col sm={4} md={3}>
@@ -200,7 +204,7 @@ function Stage1Cards() {
                         <Card style={{ width: '18rem' }} className="player">
                             <Card.Img variant="top" src={player} />
                             <Card.Body>
-                                <Card.Title>{tempPlayerStats.name}</Card.Title>
+                                <Card.Title>{userStats && userStats.name}</Card.Title>
                                 <Card.Text>
                                     You draw your Great Sword of Leeching (small chance to heal yourself during combat)!
                                     <br />
@@ -208,18 +212,18 @@ function Stage1Cards() {
                                     Prepare to fight the monster in front of you!
                                 </Card.Text>
                             </Card.Body>
-                            <ListGroup className="list-group-flush stats">
-                                <ListGroupItem>HP: {tempPlayerStats.hp}</ListGroupItem>
-                                <ListGroupItem>Attack: {tempPlayerStats.attack}</ListGroupItem>
-                                <ListGroupItem>Defense: {tempPlayerStats.defense}</ListGroupItem>
-                                <ListGroupItem>Potion: {tempPlayerStats.potion}</ListGroupItem>
-                                <ListGroupItem>Gil: {tempPlayerStats.gil}</ListGroupItem>
+                            <ListGroup horizontal className="stats">
+                                <ListGroupItem><b>HP:</b> {userStats && userStats.hp}</ListGroupItem>
+                                <ListGroupItem><b>Attack:</b> {userStats && userStats.attack}</ListGroupItem>
+                                <ListGroupItem><b>Defense:</b> {userStats && userStats.defense}</ListGroupItem>
+                                <ListGroupItem><b>Potions:</b> {userStats.potion}</ListGroupItem>
+                                <ListGroupItem><b>Gil:</b> {userStats.gil}</ListGroupItem>
                             </ListGroup>
-                            <ListGroup className="list-group-flush">
-                                <ListGroupItem><Button variant="danger" onClick={handleAttack}>Attack</Button></ListGroupItem>
-                                <ListGroupItem><Button variant="warning" onClick={handleGuard}>Guard</Button></ListGroupItem>
-                                <ListGroupItem><Button variant="success" onClick={handlePotion}>Potion</Button></ListGroupItem>
-                                <ListGroupItem><Button variant="info" onClick={handleRun} >Run!</Button></ListGroupItem>
+                            <ListGroup className="list-group-flush" position="center">
+                                <ListGroupItem><Button variant="danger" size="lg" onClick={handleAttack}>Attack</Button>
+                                    <Button variant="warning" size="lg" onClick={handleGuard}>Guard</Button>
+                                    <Button variant="success" size="lg" onClick={handlePotion}>Potion</Button>
+                                    <Button variant="info" size="lg" onClick={handleRun} >Run!</Button></ListGroupItem>
                             </ListGroup>
                             {/* <Card.Body>
                                 <Card.Link href="#">Card Link</Card.Link>
@@ -232,9 +236,9 @@ function Stage1Cards() {
                     {win &&
                         <div className="victory">
                             {win}
-                            <h1>
-                                <Button variant="primary" size="lg" href={"/" + "Boss"}>Continue the Adventure</Button>
-                            </h1>
+                            <div>
+                                <Button className="nextStage" variant="primary" size="lg" href={"/" + "Boss"}>Continue the Adventure</Button>
+                            </div>
                         </div>}
                     {lose &&
                         <div className="loser">
@@ -255,10 +259,10 @@ function Stage1Cards() {
                                     {monsterStats.intro}
                                 </Card.Text>
                             </Card.Body>
-                            <ListGroup className="list-group-flush stats">
-                                <ListGroupItem>HP: {monsterStats && monsterStats.hp}</ListGroupItem>
-                                <ListGroupItem>Attack: {monsterStats && monsterStats.attack}</ListGroupItem>
-                                <ListGroupItem>Defense: {monsterStats && monsterStats.defense}</ListGroupItem>
+                            <ListGroup horizontal className="stats">
+                                <ListGroupItem><b>HP:</b> {monsterStats && monsterStats.hp}</ListGroupItem>
+                                <ListGroupItem><b>Attack:</b> {monsterStats && monsterStats.attack}</ListGroupItem>
+                                <ListGroupItem><b>Defense:</b> {monsterStats && monsterStats.defense}</ListGroupItem>
                             </ListGroup>
                             {/* <Card.Body>
                                 <Card.Link href="#">Card Link</Card.Link>
