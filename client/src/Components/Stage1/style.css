@@ -22,3 +22,11 @@ button:active {
   padding-bottom: 10px;
   text-align: center;
 }
+
+#player_image {
+  background-image: url('../../Assets/card_background_forest_2x.png');
+}
+
+#monster_image {
+  background-image: url('../../Assets/card_background_forest_2x.png');
+}

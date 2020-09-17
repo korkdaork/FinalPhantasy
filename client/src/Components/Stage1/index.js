@@ -15,6 +15,7 @@ import player from "../../Assets/knight.gif"
 import orc from "../../Assets/orc.gif"
 import slime from "../../Assets/slime.gif"
 import chocobo from "../../Assets/chocobo.gif"
+import card_background_forest from "../../Assets/card_background_forest.png"
 
 
 function Stage1Cards() {
@@ -193,7 +194,8 @@ function Stage1Cards() {
                 <Col sm={4} md={3}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="player">
-                            <Card.Img variant="top" src={player} />
+                            
+                            <Card.Img id="player_image" variant="top" src={player} />
                             <Card.Body>
                                 <Card.Title>{tempPlayerStats.name}</Card.Title>
                                 <Card.Text>
@@ -236,7 +238,7 @@ function Stage1Cards() {
                 <Col  sm={4} md={3}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="enemy">
-                            <Card.Img variant="top" src={monsterStats.image} />
+                            <Card.Img id="monster_image" variant="top" src={monsterStats.image} />
                             <Card.Body>
                                 <Card.Title>{monsterStats.name}</Card.Title>
                                 <Card.Text>
