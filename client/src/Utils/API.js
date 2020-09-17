@@ -4,6 +4,7 @@ export default {
   // Gets all books
   getItems: function () {
     return axios.get("/api/items");
+    // return JSON.parse(localStorage.getItem("statItem"));
   },
   // Gets the book with the given id
   getItem: function (id) {
@@ -16,6 +17,7 @@ export default {
   // Saves a book to the database
   saveItem: function (itemData) {
     return axios.post("/api/items", itemData);
+    // localStorage.setItem("useritems", JSON.stringify(statItem));
   },
   // Gets all books
   getStats: function () {
@@ -24,6 +26,7 @@ export default {
   // Gets the book with the given id
   getStat: function (id) {
     return axios.get("/api/stats/" + id);
+    // return JSON.parse(localStorage.getItem("userstats"));
   },
   // Deletes the book with the given id
   deleteStat: function (id) {
@@ -31,9 +34,10 @@ export default {
   },
   // Saves a book to the database
   saveStat: function (statData) {
-    return axios.post("/api/stats", statData);
+    // return axios.post("/api/stats", statData);
+    localStorage.setItem("userstats", JSON.stringify(statData));
   },
-  // Gets all user
+  // Gets all users
   getUsers: function () {
     return axios.get("/api/user");
   },

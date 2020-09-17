@@ -51,6 +51,8 @@ function BossCards() {
 
     const [lose, setLose] = useState();
 
+    const [run, setRun] = useState();
+
     // ================================ USER/PLAYER LOGIC & INFO =====================================
     // --------------------- Will pull info from db -------------------------------------
     const [userStats, setUserStats] = useState();
@@ -67,18 +69,20 @@ function BossCards() {
         console.log("attack")
         const monsterHitPoints = combatAPI.attack(tempPlayerStats.attack, monsterStats.hp, monsterStats.defense);
         if (monsterHitPoints <= 0) {
-            setWin("You Win");
+            setWin("You Win", setTimeout(function () {
+                window.location = "/Victory"
+            }, 2000));
             //add user gil after defeating monster
         } else {
             setMonsterStats({ ...monsterStats, hp: monsterHitPoints });
             const playerHitPoints = combatAPI.monsterRet(tempPlayerStats.hp, tempPlayerStats.defense, monsterStats.attack);
             if (playerHitPoints <= 0) {
-                setLose("You Lose");
+                setLose("You Lose", setTimeout(function () {
+                    window.location = "/Defeat"
+                }, 2000));
             } else {
                 setTempPlayerStats({ ...tempPlayerStats, hp: playerHitPoints })
             };
-            // const monsterCounter = combatAPI.monsterRet(100, 20, monsterStats.attack);
-            //setUserStats needed
         };
     };
 
@@ -86,12 +90,16 @@ function BossCards() {
         console.log("guard")
         const playerHitPoints = combatAPI.guard(tempPlayerStats.hp, tempPlayerStats.defense, monsterStats.attack);
         if (playerHitPoints <= 0) {
-            setLose("You Lose");
+            setLose("You Lose", setTimeout(function () {
+                window.location = "/Defeat"
+            }, 2000));
         } else {
             setTempPlayerStats({ ...tempPlayerStats, hp: playerHitPoints });
             const monsterHitPoints = combatAPI.attack(tempPlayerStats.attack, monsterStats.hp, monsterStats.defense);
             if (monsterHitPoints <= 0) {
-                setWin("You Win");
+                setWin("You Win", setTimeout(function () {
+                    window.location = "/Victory"
+                }, 2000));
                 //add user gil after defeating monster
             } else {
                 setMonsterStats({ ...monsterStats, hp: monsterHitPoints });
@@ -112,15 +120,16 @@ function BossCards() {
     };
 
     const handleRun = () => {
-        alert("RUN YOU COWARD")
+        setRun("You Run away like a Coward!", setTimeout(function () {
+            window.location = "/Defeat"
+        }, 2000));
     };
-
 
     // ============================= REACT CARDS AND PAGE =====================================
     return (
         <Container-fluid>
             <Jumbotron>
-                <h1>Your adventure leads you to the Boss Fight!</h1>
+                <h2>Your adventure leads you to the Boss Fight!</h2>
             </Jumbotron>
             <Row>
                 <Col xs={6} md={4}>
@@ -164,6 +173,10 @@ function BossCards() {
                     {lose &&
                         <div className="loser">
                             {lose}
+                        </div>}
+                    {run &&
+                        <div className="runner">
+                            {run}
                         </div>}
                 </Col>
                 <Col xs={6} md={4}>

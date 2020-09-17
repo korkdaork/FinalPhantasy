@@ -119,6 +119,8 @@ function Stage1Cards() {
 
     const [lose, setLose] = useState();
 
+    const [run, setRun] = useState();
+
     // ================================ USER/PLAYER LOGIC & INFO =====================================
     // --------------------- Will pull info from db -------------------------------------
     const [userStats, setUserStats] = useState();
@@ -141,12 +143,12 @@ function Stage1Cards() {
             setMonsterStats({ ...monsterStats, hp: monsterHitPoints });
             const playerHitPoints = combatAPI.monsterRet(tempPlayerStats.hp, tempPlayerStats.defense, monsterStats.attack);
             if (playerHitPoints <= 0) {
-                setLose("You Lose");
+                setLose("You Lose", setTimeout(function () {
+                    window.location = "/Defeat"
+                }, 2000));
             } else {
                 setTempPlayerStats({ ...tempPlayerStats, hp: playerHitPoints })
             };
-            // const monsterCounter = combatAPI.monsterRet(100, 20, monsterStats.attack);
-            //setUserStats needed
         };
     };
 
@@ -154,7 +156,9 @@ function Stage1Cards() {
         console.log("guard")
         const playerHitPoints = combatAPI.guard(tempPlayerStats.hp, tempPlayerStats.defense, monsterStats.attack);
         if (playerHitPoints <= 0) {
-            setLose("You Lose");
+            setLose("You Lose", setTimeout(function () {
+                window.location = "/Defeat"
+            }, 2000));
         } else {
             setTempPlayerStats({ ...tempPlayerStats, hp: playerHitPoints });
             const monsterHitPoints = combatAPI.attack(tempPlayerStats.attack, monsterStats.hp, monsterStats.defense);
@@ -180,15 +184,16 @@ function Stage1Cards() {
     };
 
     const handleRun = () => {
-        alert("RUN YOU COWARD")
+        setRun("You Run away like a Coward!", setTimeout(function () {
+            window.location = "/Defeat"
+        }, 2000));
     };
-
 
     // ============================= REACT CARDS AND PAGE =====================================
     return (
         <Container-fluid>
             <Jumbotron>
-                <h1>Your adventure leads you to Stage One!</h1>
+                <h2>Your adventure leads you to Stage One!</h2>
             </Jumbotron>
             <Row>
                 <Col sm={4} md={3}>
@@ -229,13 +234,20 @@ function Stage1Cards() {
                     {win &&
                         <div className="victory">
                             {win}
+                            <h1>
+                                <Button variant="primary" size="lg" href={"/" + "Boss"}>Continue the Adventure</Button>
+                            </h1>
                         </div>}
                     {lose &&
                         <div className="loser">
                             {lose}
                         </div>}
+                    {run &&
+                        <div className="runner">
+                            {run}
+                        </div>}
                 </Col>
-                <Col  sm={4} md={3}>
+                <Col sm={4} md={3}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="enemy">
                             <Card.Img id="monster_image" variant="top" src={monsterStats.image} />
