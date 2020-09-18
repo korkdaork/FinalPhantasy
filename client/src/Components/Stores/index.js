@@ -18,9 +18,9 @@ import styled, { keyframes } from 'styled-components';
 import { bounce } from 'react-animations';
 
 //const Bounce = styled.div`animation: 2s hVlBnv infinite`;
-const Bounce = styled.div`animation: 2s ${keyframes`${bounce}`} infinite`;
+let Bounce = styled.div``//styled.div`animation: 2s ${keyframes`${bounce}`} infinite`;
 let BounceStyle = {animation: `2s hVlBnv infinite`};
-let bounceAnimation = `2s ${keyframes`${bounce}`} infinite`;
+//let bounceAnimation = `2s ${keyframes`${bounce}`} infinite`;
 const fadeIn = keyframes`
   0% {
     opacity: 0;
@@ -29,10 +29,19 @@ const fadeIn = keyframes`
     opacity: 1;
   }
 `
+function mouseEnterBounce() {
+  console.log("mouseEnter");
+  Bounce = styled.div`animation: 2s ${keyframes`${bounce}`} infinite`;
+}
 
+const mouseLeaveBounce = () => {
+  console.log("mouseLeave");
+  Bounce = styled.div``;
+}
 //let BounceStyle = {animation: `2s ${keyframes`${bounce}`} infinite`};
 // let CardImageStyle = {};
 
+//onMouseEnter={()=>mouseEnterBounce()} onMouseLeave={()=>mouseLeaveBounce()}
 
 
 function Stores() {
@@ -179,15 +188,12 @@ function Stores() {
     buyPotion("defensecontext", numDefense);
     buyPotion("speedcontext", numSpeed);
     buyPotion("gilcontext", numGil);
-<<<<<<< HEAD
-    const heavystat = { hp: numHp, attack: numAttack, defense: numDefense, gil: numGil };
-    API.saveStat(heavystat);
-=======
     const heavystat = { hp: numHp, attack: numAttack, defense: numDefense, gil: numGil, potion: potion };
     API.saveStat(heavystat).then(res => { console.log(res.data) });
->>>>>>> 72bf78fa22550ce38aef8f5fbcb5eae3b528ebf3
 
   }
+
+  
 
   return (
 
@@ -210,19 +216,13 @@ function Stores() {
       </Jumbotron>
       <CardGroup>
         <Card>
-<<<<<<< HEAD
-          <div style="bounceAnimation">
-            <Card.Img onMouseEnter={()=>console.log("mouseEnter")} variant="top" src={sword} />
+          <div class="bounce">
+            <Card.Img  variant="top" src={sword} />
             </div>
           <Card.Body>
 
             <Card.Title id="sword">Sword </Card.Title>
 
-=======
-          <Card.Img variant="top" src={sword} />
-          <Card.Body>
-            <Card.Title id="sword">Sword </Card.Title>
->>>>>>> 72bf78fa22550ce38aef8f5fbcb5eae3b528ebf3
             <Card.Text>
               <ListGroup>
                 <ListGroup.Item>Attack: 25</ListGroup.Item>
