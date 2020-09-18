@@ -6,11 +6,11 @@ const FFController = require("../../controllers/FFController");
 //     .get(FFController.findAllStats)
 //     .post(FFController.create);
 
-// Matches with "/api/books/:id"
+// Matches with "/api/stats/
 router
-    .route("/:id")
+    .route("/")
     .get(FFController.findStatsByUserId)
-    .put(FFController.update)
-    .delete(FFController.remove);
+    .put(FFController.updateStats)
+    .delete(FFController.removeStats);
 
 module.exports = router;
