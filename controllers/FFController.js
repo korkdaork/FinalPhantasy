@@ -107,7 +107,7 @@ module.exports = {
           )
           .then(() => {
             console.log(req.body, "here's the req")
-            res.status(200).json({ message: "user created successfully" });
+            res.status(200).json({ message: "user created successful" });
           })
           .catch(err => res.status(422).json(err));
 
