@@ -34,8 +34,10 @@ export default {
   },
   // Saves a book to the database
   saveStat: function (statData) {
-    // return axios.post("/api/stats", statData);
     localStorage.setItem("userstats", JSON.stringify(statData));
+    const userId = localStorage.getItem("id")
+    console.log(statData)
+    return axios.put("/api/stats/" + userId, statData);
   },
   // Gets all users
   getUsers: function () {
@@ -45,6 +47,11 @@ export default {
   getUser: function (id) {
     return axios.get("/api/user/" + id);
   },
+
+  login: function (credentials) {
+    return axios.post("/api/login", credentials)
+  },
+
   // Deletes the book with the given id
   deleteUser: function (id) {
     return axios.delete("/api/user/" + id);
@@ -53,4 +60,5 @@ export default {
   saveUser: function (saveData) {
     return axios.post("/api/user", saveData);
   }
+
 };

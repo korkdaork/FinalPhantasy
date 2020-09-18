@@ -35,8 +35,6 @@ const fadeIn = keyframes`
 
 
 
-
-
 function Stores() {
   const { buyPotion, gilcontext, hpcontext, attackcontext, defensecontext, speedcontext, potioncontext } = useContext(DeveloperContext)
   console.log(gilcontext);
@@ -181,8 +179,13 @@ function Stores() {
     buyPotion("defensecontext", numDefense);
     buyPotion("speedcontext", numSpeed);
     buyPotion("gilcontext", numGil);
+<<<<<<< HEAD
     const heavystat = { hp: numHp, attack: numAttack, defense: numDefense, gil: numGil };
     API.saveStat(heavystat);
+=======
+    const heavystat = { hp: numHp, attack: numAttack, defense: numDefense, gil: numGil, potion: potion };
+    API.saveStat(heavystat).then(res => { console.log(res.data) });
+>>>>>>> 72bf78fa22550ce38aef8f5fbcb5eae3b528ebf3
 
   }
 
@@ -207,6 +210,7 @@ function Stores() {
       </Jumbotron>
       <CardGroup>
         <Card>
+<<<<<<< HEAD
           <div style="bounceAnimation">
             <Card.Img onMouseEnter={()=>console.log("mouseEnter")} variant="top" src={sword} />
             </div>
@@ -214,6 +218,11 @@ function Stores() {
 
             <Card.Title id="sword">Sword </Card.Title>
 
+=======
+          <Card.Img variant="top" src={sword} />
+          <Card.Body>
+            <Card.Title id="sword">Sword </Card.Title>
+>>>>>>> 72bf78fa22550ce38aef8f5fbcb5eae3b528ebf3
             <Card.Text>
               <ListGroup>
                 <ListGroup.Item>Attack: 25</ListGroup.Item>

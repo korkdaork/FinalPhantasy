@@ -23,7 +23,7 @@ function BossCards() {
             attack: 9999,
             defense: 9999,
             gil: 9999,
-            intro: "There is one SOLDIER named Sephiroth, who is a tall man with a muscular build. He wears a long black coat with silver pauldrons, black boots and black trousers. The top of his coat is open to reveal his chest, with his leather SOLDIER suspenders crossed over it. Sephiroth's long silver hair has bangs parted to either side of his face. He is better than the rest of SOLDIER, but when he found out about the terrible experiments that made him, he began to hate Shinra. And then, over time, he began to hate everything.",
+            intro: "There is one SOLDIER named Sephiroth, who is a tall man with a muscular build. He wears a long black coat with silver pauldrons, black boots and black trousers. The top of his coat is open to reveal his chest, with his leather SOLDIER suspenders crossed over it. Sephiroth's long silver hair has bangs parted to either side of his face. When he found out about the terrible experiments that made him, he began to hate Shinra. Over time, he began to hate everything - including YOU!",
             image: sephiroth
         }
     ]
@@ -145,18 +145,18 @@ function BossCards() {
                                     Prepare to DIE!
                                 </Card.Text>
                             </Card.Body>
-                            <ListGroup className="list-group-flush stats">
-                                <ListGroupItem>HP: {tempPlayerStats.hp}</ListGroupItem>
-                                <ListGroupItem>Attack: {tempPlayerStats.attack}</ListGroupItem>
-                                <ListGroupItem>Defense: {tempPlayerStats.defense}</ListGroupItem>
-                                <ListGroupItem>Potion: {tempPlayerStats.potion}</ListGroupItem>
-                                <ListGroupItem>Gil: {tempPlayerStats.gil}</ListGroupItem>
+                            <ListGroup horizontal className="stats">
+                                <ListGroupItem><b>HP:</b> {tempPlayerStats.hp}</ListGroupItem>
+                                <ListGroupItem><b>Attack:</b> {tempPlayerStats.attack}</ListGroupItem>
+                                <ListGroupItem><b>Defense:</b> {tempPlayerStats.defense}</ListGroupItem>
+                                <ListGroupItem><b>Potions:</b> {tempPlayerStats.potion}</ListGroupItem>
+                                <ListGroupItem><b>Gil:</b> {tempPlayerStats.gil}</ListGroupItem>
                             </ListGroup>
-                            <ListGroup className="list-group-flush">
-                                <ListGroupItem><Button variant="danger" onClick={handleAttack}>Attack</Button></ListGroupItem>
-                                <ListGroupItem><Button variant="warning" onClick={handleGuard}>Guard</Button></ListGroupItem>
-                                <ListGroupItem><Button variant="success" onClick={handlePotion}>Potion</Button></ListGroupItem>
-                                <ListGroupItem><Button variant="info" onClick={handleRun} >Run!</Button></ListGroupItem>
+                            <ListGroup className="list-group-flush" position="center">
+                                <ListGroupItem><Button variant="danger" size="lg" onClick={handleAttack}>Attack</Button>
+                                    <Button variant="warning" size="lg" onClick={handleGuard}>Guard</Button>
+                                    <Button variant="success" size="lg" onClick={handlePotion}>Potion</Button>
+                                    <Button variant="info" size="lg" onClick={handleRun} >Run!</Button></ListGroupItem>
                             </ListGroup>
                             {/* <Card.Body>
                                 <Card.Link href="#">Card Link</Card.Link>
@@ -189,10 +189,10 @@ function BossCards() {
                                     {monsterStats.intro}
                                 </Card.Text>
                             </Card.Body>
-                            <ListGroup className="list-group-flush stats">
-                                <ListGroupItem>HP: {monsterStats && monsterStats.hp}</ListGroupItem>
-                                <ListGroupItem>Attack: {monsterStats && monsterStats.attack}</ListGroupItem>
-                                <ListGroupItem>Defense: {monsterStats && monsterStats.defense}</ListGroupItem>
+                            <ListGroup horizontal className="stats">
+                                <ListGroupItem><b>HP:</b> {monsterStats && monsterStats.hp}</ListGroupItem>
+                                <ListGroupItem><b>Attack:</b> {monsterStats && monsterStats.attack}</ListGroupItem>
+                                <ListGroupItem><b>Defense:</b> {monsterStats && monsterStats.defense}</ListGroupItem>
                             </ListGroup>
                             {/* <Card.Body>
                                 <Card.Link href="#">Card Link</Card.Link>
