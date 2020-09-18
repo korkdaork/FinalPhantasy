@@ -120,7 +120,7 @@ function BossCards() {
     };
 
     const handleRun = () => {
-        setRun("You Run away like a Coward!", setTimeout(function () {
+        setRun("RUN AWAY!!", setTimeout(function () {
             window.location = "/Defeat"
         }, 2000));
     };
