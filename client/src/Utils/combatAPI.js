@@ -2,11 +2,11 @@
 export default {
 
     attack: function (userAtk, monsterHP, monsterDef) {
-        return monsterHP -= userAtk - monsterDef; //issue found with defense being higher than attack, making attack heal.
+        return monsterHP -= (Math.max(0, userAtk - monsterDef));
     },
 
     guard: function (userHP, userDef, monsterAtk) {
-        return userHP -= monsterAtk - (userDef * 2);
+        return userHP -= (Math.max(0, monsterAtk - (userDef * 2)));
     },
 
     usePotion: function (userHP) {
@@ -18,7 +18,7 @@ export default {
     },
 
     monsterRet: function (userHP, userDef, monsterAtk) {
-        return userHP -= monsterAtk - userDef;
+        return userHP -= (Math.max(0, monsterAtk - userDef));
     },
 
     reducePotions: function (userPotion) {

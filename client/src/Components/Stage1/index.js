@@ -95,19 +95,6 @@ function Stage1Cards() {
         }
     ]
 
-    // =============================== TEMP PLAYER STATS (TO BE DELETED LATER) ===================
-    const tempPlayer =
-    {
-        name: "Temporary Player",
-        hp: 150,
-        attack: 45,
-        defense: 22,
-        gil: 250,
-        potion: 5
-    };
-
-    const [tempPlayerStats, setTempPlayerStats] = useState(tempPlayer);
-
     // ============================== GAME LOGIC ===============================================
     const [monsterStats, setMonsterStats] = useState(
         monsterArray[Math.floor(Math.random() * Math.floor(8))]
@@ -140,8 +127,11 @@ function Stage1Cards() {
         console.log("attack")
         const monsterHitPoints = combatAPI.attack(userStats.attack, monsterStats.hp, monsterStats.defense);
         if (monsterHitPoints <= 0) {
+            const newGil = userStats.gil + monsterStats.gil
+            const gilUpdate = { gil: newGil };
+            API.saveStat(gilUpdate)
+            setUserStats({ ...userStats, gil: newGil })
             setWin("You Win");
-            //add user gil after defeating monster
         } else {
             setMonsterStats({ ...monsterStats, hp: monsterHitPoints });
             const playerHitPoints = combatAPI.monsterRet(userStats.hp, userStats.defense, monsterStats.attack);
@@ -166,8 +156,11 @@ function Stage1Cards() {
             setUserStats({ ...userStats, hp: playerHitPoints });
             const monsterHitPoints = combatAPI.attack(userStats.attack, monsterStats.hp, monsterStats.defense);
             if (monsterHitPoints <= 0) {
+                const newGil = userStats.gil + monsterStats.gil
+                const gilUpdate = { gil: newGil };
+                API.saveStat(gilUpdate)
+                setUserStats({ ...userStats, gil: newGil })
                 setWin("You Win");
-                //add user gil after defeating monster
             } else {
                 setMonsterStats({ ...monsterStats, hp: monsterHitPoints });
                 // setMonsterStats({ ...monsterStats, hp: monsterHitPoints });
@@ -204,7 +197,7 @@ function Stage1Cards() {
                         <Card style={{ width: '18rem' }} className="player">
                             <Card.Img variant="top" src={player} />
                             <Card.Body>
-                                <Card.Title>{userStats && userStats.name}</Card.Title>
+                                <Card.Title><b>{userStats && userStats.name}</b></Card.Title>
                                 <Card.Text>
                                     You draw your Great Sword of Leeching (small chance to heal yourself during combat)!
                                     <br />
@@ -237,7 +230,7 @@ function Stage1Cards() {
                         <div className="victory">
                             {win}
                             <div>
-                                <Button className="nextStage" variant="primary" size="lg" href={"/" + "Boss"}>Continue the Adventure</Button>
+                                <Button className="nextStage" variant="primary" size="lg" href={"/" + "Boss"}>Charge Forth!</Button> <Button className="toStore" variant="primary" size="lg" href={"/" + "Store"}>To the Shop...</Button>
                             </div>
                         </div>}
                     {lose &&

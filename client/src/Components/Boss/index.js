@@ -28,19 +28,6 @@ function BossCards() {
         }
     ]
 
-    // =============================== TEMP PLAYER STATS (TO BE DELETED LATER) ===================
-    const tempPlayer =
-    {
-        name: "Temporary Player",
-        hp: 150,
-        attack: 45,
-        defense: 22,
-        gil: 250,
-        potion: 5
-    };
-
-    const [tempPlayerStats, setTempPlayerStats] = useState(tempPlayer);
-
     // ============================== GAME LOGIC ===============================================
     const [monsterStats, setMonsterStats] = useState(
         monsterArray[Math.floor(Math.random() * Math.floor(1))]
@@ -55,52 +42,62 @@ function BossCards() {
 
     // ================================ USER/PLAYER LOGIC & INFO =====================================
     // --------------------- Will pull info from db -------------------------------------
-    const [userStats, setUserStats] = useState();
+    const [userStats, setUserStats] = useState({
+        name: localStorage.getItem("firstName"), hp: "", attack: "", defense: "", potion: "", gil: ""
+    });
 
-    // useEffect(() => {
-    //     const userId = localStorage.getItem("userId");
-    //     API.getStat(userId).then(res => {
-    //         setUserStats(res.data)
-    //     });
-    // }, []);
+    console.log(userStats)
+    useEffect(() => {
+        const userId = localStorage.getItem("id");
+        API.getStat(userId).then(res => {
+            setUserStats(res.data)
+            console.log(res)
+        });
+    }, []);
 
     // ==================================== COMBAT LOGIC =======================================
     const handleAttack = () => {
         console.log("attack")
-        const monsterHitPoints = combatAPI.attack(tempPlayerStats.attack, monsterStats.hp, monsterStats.defense);
+        const monsterHitPoints = combatAPI.attack(userStats.attack, monsterStats.hp, monsterStats.defense);
         if (monsterHitPoints <= 0) {
+            const newGil = userStats.gil + monsterStats.gil
+            const gilUpdate = { gil: newGil };
+            API.saveStat(gilUpdate)
+            setUserStats({ ...userStats, gil: newGil })
             setWin("You Win", setTimeout(function () {
                 window.location = "/Victory"
             }, 2000));
-            //add user gil after defeating monster
         } else {
             setMonsterStats({ ...monsterStats, hp: monsterHitPoints });
-            const playerHitPoints = combatAPI.monsterRet(tempPlayerStats.hp, tempPlayerStats.defense, monsterStats.attack);
+            const playerHitPoints = combatAPI.monsterRet(userStats.hp, userStats.defense, monsterStats.attack);
             if (playerHitPoints <= 0) {
                 setLose("You Lose", setTimeout(function () {
                     window.location = "/Defeat"
                 }, 2000));
             } else {
-                setTempPlayerStats({ ...tempPlayerStats, hp: playerHitPoints })
+                setUserStats({ ...userStats, hp: playerHitPoints })
             };
         };
     };
 
     const handleGuard = () => {
         console.log("guard")
-        const playerHitPoints = combatAPI.guard(tempPlayerStats.hp, tempPlayerStats.defense, monsterStats.attack);
+        const playerHitPoints = combatAPI.guard(userStats.hp, userStats.defense, monsterStats.attack);
         if (playerHitPoints <= 0) {
             setLose("You Lose", setTimeout(function () {
                 window.location = "/Defeat"
             }, 2000));
         } else {
-            setTempPlayerStats({ ...tempPlayerStats, hp: playerHitPoints });
-            const monsterHitPoints = combatAPI.attack(tempPlayerStats.attack, monsterStats.hp, monsterStats.defense);
+            setUserStats({ ...userStats, hp: playerHitPoints });
+            const monsterHitPoints = combatAPI.attack(userStats.attack, monsterStats.hp, monsterStats.defense);
             if (monsterHitPoints <= 0) {
+                const newGil = userStats.gil + monsterStats.gil
+                const gilUpdate = { gil: newGil };
+                API.saveStat(gilUpdate)
+                setUserStats({ ...userStats, gil: newGil })
                 setWin("You Win", setTimeout(function () {
                     window.location = "/Victory"
                 }, 2000));
-                //add user gil after defeating monster
             } else {
                 setMonsterStats({ ...monsterStats, hp: monsterHitPoints });
                 // setMonsterStats({ ...monsterStats, hp: monsterHitPoints });
@@ -110,21 +107,20 @@ function BossCards() {
 
     const handlePotion = () => {
         console.log("potion")
-        const playerHitPoints = combatAPI.usePotion(tempPlayerStats.hp);
-        if (tempPlayerStats.potion >= 1) {
-            const playerPotions = combatAPI.reducePotions(tempPlayerStats.potion);
-            setTempPlayerStats({ ...tempPlayerStats, hp: playerHitPoints, potion: playerPotions });
+        const playerHitPoints = combatAPI.usePotion(userStats.hp);
+        if (userStats.potion >= 1) {
+            const playerPotions = combatAPI.reducePotions(userStats.potion);
+            setUserStats({ ...userStats, hp: playerHitPoints, potion: playerPotions });
         } else {
             //need to block out the potions button - look at store code
         }
     };
 
     const handleRun = () => {
-        setRun("You Run away like a Coward!", setTimeout(function () {
+        setRun("You Run away like a COWARD!", setTimeout(function () {
             window.location = "/Defeat"
         }, 2000));
     };
-
     // ============================= REACT CARDS AND PAGE =====================================
     return (
         <Container-fluid>
@@ -137,7 +133,7 @@ function BossCards() {
                         <Card style={{ width: '18rem' }} className="player">
                             <Card.Img variant="top" src={player} />
                             <Card.Body>
-                                <Card.Title>{tempPlayerStats.name}</Card.Title>
+                                <Card.Title><b>{userStats && userStats.name}</b></Card.Title>
                                 <Card.Text>
                                     You draw your Great Sword of Leeching (small chance to heal yourself during combat)!
                                     <br />
@@ -146,11 +142,11 @@ function BossCards() {
                                 </Card.Text>
                             </Card.Body>
                             <ListGroup horizontal className="stats">
-                                <ListGroupItem><b>HP:</b> {tempPlayerStats.hp}</ListGroupItem>
-                                <ListGroupItem><b>Attack:</b> {tempPlayerStats.attack}</ListGroupItem>
-                                <ListGroupItem><b>Defense:</b> {tempPlayerStats.defense}</ListGroupItem>
-                                <ListGroupItem><b>Potions:</b> {tempPlayerStats.potion}</ListGroupItem>
-                                <ListGroupItem><b>Gil:</b> {tempPlayerStats.gil}</ListGroupItem>
+                                <ListGroupItem><b>HP:</b> {userStats && userStats.hp}</ListGroupItem>
+                                <ListGroupItem><b>Attack:</b> {userStats && userStats.attack}</ListGroupItem>
+                                <ListGroupItem><b>Defense:</b> {userStats && userStats.defense}</ListGroupItem>
+                                <ListGroupItem><b>Potions:</b> {userStats.potion}</ListGroupItem>
+                                <ListGroupItem><b>Gil:</b> {userStats.gil}</ListGroupItem>
                             </ListGroup>
                             <ListGroup className="list-group-flush" position="center">
                                 <ListGroupItem><Button variant="danger" size="lg" onClick={handleAttack}>Attack</Button>
