@@ -15,19 +15,19 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  create: function (req, res) {
+  createItem: function (req, res) {
     db.Item
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  // update: function (req, res) {
-  //   db.Item
-  //     .findOneAndUpdate({ _id: req.params.id }, req.body)
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
-  remove: function (req, res) {
+  updateItem: function (req, res) {
+    db.Item
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  removeItem: function (req, res) {
     db.Item
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
@@ -49,13 +49,13 @@ module.exports = {
       .then(dbModel => { console.log(dbModel); res.json(dbModel) })
       .catch(err => res.status(422).json(err));
   },
-  create: function (req, res) {
+  createStats: function (req, res) {
     db.Stats
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  update: function (req, res) {
+  updateStats: function (req, res) {
     console.log(req.params.id)
     console.log(req.body)
     db.Stats
@@ -63,7 +63,7 @@ module.exports = {
       .then(dbModel => { console.log(dbModel); res.json(dbModel) })
       .catch(err => res.status(422).json(err));
   },
-  remove: function (req, res) {
+  removeStats: function (req, res) {
     db.Stats
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
@@ -84,7 +84,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  create: function (req, res) {
+  createUser: function (req, res) {
     db.User
       .create(req.body)
       .then(() => {
@@ -96,13 +96,13 @@ module.exports = {
         res.status(422).json(err)
       });
   },
-  // update: function (req, res) {
-  //   db.User
-  //     .findOneAndUpdate({ _id: req.params.id }, req.body)
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
-  remove: function (req, res) {
+  updateUser: function (req, res) {
+    db.User
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  removeUser: function (req, res) {
     db.User
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())

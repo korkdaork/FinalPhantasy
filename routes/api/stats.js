@@ -10,7 +10,7 @@ const FFController = require("../../controllers/FFController");
 router
     .route("/:id")
     .get(FFController.findStatsByUserId)
-    .put(FFController.update)
-    .delete(FFController.remove);
+    .put(FFController.updateStats)
+    .delete(FFController.removeStats);
 
 module.exports = router;
