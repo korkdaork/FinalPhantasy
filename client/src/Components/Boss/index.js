@@ -23,7 +23,7 @@ function BossCards() {
             attack: 9999,
             defense: 9999,
             gil: 9999,
-            intro: "There is one SOLDIER named Sephiroth, who is a tall man with a muscular build. He wears a long black coat with silver pauldrons, black boots and black trousers. The top of his coat is open to reveal his chest, with his leather SOLDIER suspenders crossed over it. Sephiroth's long silver hair has bangs parted to either side of his face. When he found out about the terrible experiments that made him, he began to hate Shinra. Over time, he began to hate everything - including YOU!",
+            intro: "Sephiroth is the strongest SOLDIER there is. He stands in front of you - you luck has run out... you should have prayed that you didn't cross his path.",
             image: sephiroth
         }
     ]
@@ -117,7 +117,7 @@ function BossCards() {
     };
 
     const handleRun = () => {
-        setRun("You Run away like a COWARD!", setTimeout(function () {
+        setRun("RUN AWAY!!", setTimeout(function () {
             window.location = "/Defeat"
         }, 2000));
     };

@@ -180,7 +180,7 @@ function Stage1Cards() {
     };
 
     const handleRun = () => {
-        setRun("You Run away like a COWARD!", setTimeout(function () {
+        setRun("RUN AWAY!!", setTimeout(function () {
             window.location = "/Defeat"
         }, 2000));
     };
