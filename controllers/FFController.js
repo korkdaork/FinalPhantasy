@@ -89,7 +89,7 @@ module.exports = {
       .create(req.body)
       .then(() => {
         console.log(req.body, "here's the req")
-        res.status(200);
+        res.status(200).json({ message: "user created successfully" });
       })
       .catch(err => {
         console.log("create user fail")

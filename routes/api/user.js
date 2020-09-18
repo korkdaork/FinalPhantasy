@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const FFController = require("../../controllers/FFController");
+const passport = require("../../config/passport")
 
 // Matches with "/api/books"
 router.route("/") //find out where it will be connecting to front end js
