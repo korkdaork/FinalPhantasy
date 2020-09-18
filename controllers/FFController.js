@@ -15,19 +15,19 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  create: function (req, res) {
+  createItem: function (req, res) {
     db.Item
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  // update: function (req, res) {
-  //   db.Item
-  //     .findOneAndUpdate({ _id: req.params.id }, req.body)
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
-  remove: function (req, res) {
+  updateItem: function (req, res) {
+    db.Item
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  removeItem: function (req, res) {
     db.Item
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
@@ -49,24 +49,26 @@ module.exports = {
       .then(dbModel => { console.log(dbModel); res.json(dbModel) })
       .catch(err => res.status(422).json(err));
   },
-  create: function (req, res) {
-    console.log("create user");
-    console.log(request.body);
+   
+  createStats: function (req, res) {
+    console.log("create stata");
+    console.log(req.body);
+    
     db.Stats
     
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  update: function (req, res) {
+  updateStats: function (req, res) {
     console.log(req.params.id)
     console.log(req.body)
     db.Stats
-      .findOneAndUpdate({ userId: req.params.id }, req.body, { new: true, upsert: true })
+      .findOneAndUpdate({ userId: req.user._id }, req.body, { new: true, upsert: true })
       .then(dbModel => { console.log(dbModel); res.json(dbModel) })
       .catch(err => res.status(422).json(err));
   },
-  remove: function (req, res) {
+  removeStats: function (req, res) {
     db.Stats
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
@@ -87,25 +89,38 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  create: function (req, res) {
+  createUser: function (req, res) {
+    console.log("create user");
     db.User
       .create(req.body)
-      .then(() => {
-        console.log(req.body, "here's the req")
-        res.status(200);
+      .then((user) => {
+        db.Stats
+        .create({
+          gil: 500,
+              hp: 30,
+              attack: 40,
+              defense: 50,
+              speed: 5,
+              potion: 1,
+              userId:user._id}
+        )
+        .then(() => { console.log(req.body, "here's the req")
+        res.status(200);})
+        .catch(err => res.status(422).json(err));
+       
       })
       .catch(err => {
         console.log("create user fail")
         res.status(422).json(err)
       });
   },
-  // update: function (req, res) {
-  //   db.User
-  //     .findOneAndUpdate({ _id: req.params.id }, req.body)
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
-  remove: function (req, res) {
+  updateUser: function (req, res) {
+    db.User
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  removeUser: function (req, res) {
     db.User
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())

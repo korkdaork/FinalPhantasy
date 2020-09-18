@@ -55,7 +55,8 @@ function App() {
       console.log("useeffect");
       let userdata;
        API.getStat().then((data)=>{
-         userdata=data
+         userdata=data.data
+         console.log("user data");
          console.log(data);
          if (data) {
           setDeveloperContext({

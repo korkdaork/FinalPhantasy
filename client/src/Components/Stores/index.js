@@ -33,12 +33,15 @@ function Stores() {
   const [speed, setSpeed] = useState(0);
   const [hp, setHp] = useState(0);
   const [gil, setGil] = useState(0);
+  const [noGil, setNoGil]=useState();
 
-  let numAttack = attack;
-  let numDefense = defense;
+  
+
+  let numAttack = attackcontext;
+  let numDefense = defensecontext;
   let numSpeed = speed;
-  let numHp = hp;
-  let numGil = gil;
+  let numHp = hpcontext;
+  let numGil = gilcontext;
 
   const handleButtonAPressed = () => {
     setButtonAEnabled(false);
@@ -49,7 +52,10 @@ function Stores() {
     numDefense = numDefense + 10;
     numSpeed = numSpeed + 5;
     numGil = gilcontext - 5;
-    setAttack(numAttack);
+    if (
+      numGil >=0 
+    ){
+     setAttack(numAttack);
     setDefense(numDefense);
     setSpeed(numSpeed);
     setGil(numGil);
@@ -59,6 +65,11 @@ function Stores() {
     buyPotion("gilcontext", numGil);
     const swordstat = { attack: numAttack, defense: numDefense, gil: numGil };
     API.saveStat(swordstat);
+    }
+    else {setNoGil("You don't have enough Gil")
+      
+    }
+    
   }
 
 
@@ -71,6 +82,10 @@ function Stores() {
     numDefense = numDefense + 8;
     numSpeed = numSpeed + 3;
     numGil = gilcontext - 5;
+    if (
+      numGil >=0
+    )
+    {
     setAttack(numAttack);
     setDefense(numDefense);
     setSpeed(numSpeed);
@@ -81,6 +96,9 @@ function Stores() {
     buyPotion("gilcontext", numGil);
     const axestat = { attack: numAttack, defense: numDefense, gil: numGil };
     API.saveStat(axestat);
+    }
+    else {setNoGil("You do not have enough Gil")
+  }
   }
   const handleButtonCPressed = () => {
     setButtonAEnabled(false);
@@ -91,6 +109,10 @@ function Stores() {
     numDefense = numDefense + 5;
     numSpeed = numSpeed + 2;
     numGil = gilcontext - 5;
+    if (
+      numGil >= 0
+    ) {
+
     setAttack(numAttack);
     setDefense(numDefense);
     setSpeed(numSpeed);
@@ -102,6 +124,8 @@ function Stores() {
     const macestat = { attack: numAttack, defense: numDefense, gil: numGil };
     API.saveStat(macestat);
   }
+  else {setNoGil("You do not have enough Gil")}
+}
   const handleButtonDPressed = () => {
     console.log(potion)
     let numPotions = potion;
@@ -110,14 +134,17 @@ function Stores() {
     if (numPotions === 5) {
       setPotionButton(true)
     }
+    if (
+      numGil >=0
+    ){
     setPotion(numPotions);
     setButtonDEnabled(false);
     buyPotion("potioncontext", numPotions);
     buyPotion("gilcontext", numGil);
-    const potionstat = { gil: numGil };
-    const potionitem = { potion: numPotions };
+    const potionstat = { gil: numGil, potion:numPotions };
     API.saveStat(potionstat);
-    API.saveItem(potionitem);
+    }
+    else {setNoGil("You do not have enough Gil")}
 
   }
   const handleButtonEPressed = () => {
@@ -129,6 +156,9 @@ function Stores() {
     numDefense = numDefense + 20;
     numSpeed = numSpeed - 3;
     numGil = gilcontext - 150;
+    if (
+      numGil >= 0
+    ){
     setHp(numHp)
     setAttack(numAttack);
     setDefense(numDefense);
@@ -141,6 +171,8 @@ function Stores() {
     buyPotion("gilcontext", numGil);
     const lightstat = { hp: numHp, attack: numAttack, defense: numDefense, gil: numGil };
     API.saveStat(lightstat);
+    }
+    else {setNoGil("You do not have enough Gil")}
   }
   const handleButtonFPressed = () => {
     setButtonEEnabled(false);
@@ -151,6 +183,9 @@ function Stores() {
     numDefense = numDefense + 50;
     numSpeed = numSpeed - 10;
     numGil = gilcontext - 200;
+    if (
+      numGil >= 0
+    ){
     setHp(numHp)
     setAttack(numAttack);
     setDefense(numDefense);
@@ -163,7 +198,10 @@ function Stores() {
     buyPotion("gilcontext", numGil);
     const heavystat = { hp: numHp, attack: numAttack, defense: numDefense, gil: numGil, potion: potion };
     API.saveStat(heavystat).then(res => { console.log(res.data) });
-
+    }
+    else {
+      setNoGil("You do not have enough Gil")
+    }
   }
 
   return (
@@ -184,6 +222,9 @@ function Stores() {
             href="/stage1">Continue Adventure</Button>
         </p>
         <p>Gil: {gilcontext} </p>
+        {noGil && 
+        <p>{noGil}</p>
+        }
       </Jumbotron>
       <CardGroup>
         <Card>
