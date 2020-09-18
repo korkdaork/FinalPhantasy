@@ -36,7 +36,8 @@ function Signups() {
 
         )
             .then(res => {
-                if (res.data.success) {
+                console.log(res.data)
+                if (res.data) {
                     window.location = "/main"
                 } else {
                     alert("Invalid Login")
@@ -68,20 +69,12 @@ function Signups() {
             <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" onChange={handleInputChange} name="password" />
-                <br/>
                 <Form.Label>Re-Enter Password</Form.Label>
-                <br/>
                 <Form.Control type="password" placeholder="Password" onChange={handleInputChange} name="confirmPassword" />
             </Form.Group>
             <Button type="submit">Submit</Button>
-            <hr/>
-            <hr/>
-            <hr/>
-            <hr/>
-            <hr/>
 
         </Form>
-        
     );
 }
 export default Signups;

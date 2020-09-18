@@ -49,13 +49,13 @@ module.exports = {
       .then(dbModel => { console.log(dbModel); res.json(dbModel) })
       .catch(err => res.status(422).json(err));
   },
-   
+
   createStats: function (req, res) {
     console.log("create stata");
     console.log(req.body);
-    
+
     db.Stats
-    
+
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -95,19 +95,22 @@ module.exports = {
       .create(req.body)
       .then((user) => {
         db.Stats
-        .create({
-          gil: 500,
-              hp: 30,
-              attack: 40,
-              defense: 50,
-              speed: 5,
-              potion: 1,
-              userId:user._id}
-        )
-        .then(() => { console.log(req.body, "here's the req")
-        res.status(200);})
-        .catch(err => res.status(422).json(err));
-       
+          .create({
+            gil: 500,
+            hp: 30,
+            attack: 40,
+            defense: 50,
+            speed: 5,
+            potion: 1,
+            userId: user._id
+          }
+          )
+          .then(() => {
+            console.log(req.body, "here's the req")
+            res.status(200);
+          })
+          .catch(err => res.status(422).json(err));
+
       })
       .catch(err => {
         console.log("create user fail")
