@@ -43,14 +43,17 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findStatsByUserId: function (req, res) {
-    console.log(req.params.id)
+    console.log(req.user)
     db.Stats
-      .findOne({ userId: req.params.id })
+      .findOne({ userId: req.user._id })
       .then(dbModel => { console.log(dbModel); res.json(dbModel) })
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
+    console.log("create user");
+    console.log(request.body);
     db.Stats
+    
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

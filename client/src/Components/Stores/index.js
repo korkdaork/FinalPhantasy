@@ -124,7 +124,7 @@ function Stores() {
     setButtonEEnabled(false);
     setButtonFEnabled(false);
     console.log(hp, attack, defense, speed, gil);
-    numHp = numHp + 50;
+    numHp = numHp + 80;
     numAttack = numAttack + 0;
     numDefense = numDefense + 20;
     numSpeed = numSpeed - 3;
@@ -146,7 +146,7 @@ function Stores() {
     setButtonEEnabled(false);
     setButtonFEnabled(false);
     console.log(hp, attack, defense, speed, gil);
-    numHp = numHp + 35;
+    numHp = numHp + 70;
     numAttack = numAttack + 0;
     numDefense = numDefense + 50;
     numSpeed = numSpeed - 10;
@@ -268,7 +268,7 @@ function Stores() {
             <Card.Title id="light">Light Armor </Card.Title>
             <Card.Text>
               <ListGroup>
-                <ListGroup.Item>HP: 50</ListGroup.Item>
+                <ListGroup.Item>HP: 80</ListGroup.Item>
                 <ListGroup.Item>Attack: 0</ListGroup.Item>
                 <ListGroup.Item>Defense: 20</ListGroup.Item>
                 <ListGroup.Item>Speed: -3</ListGroup.Item>
@@ -288,7 +288,7 @@ function Stores() {
             <Card.Title id="heavy">Heavy Armor </Card.Title>
             <Card.Text>
               <ListGroup>
-                <ListGroup.Item>HP: 35</ListGroup.Item>
+                <ListGroup.Item>HP: 70</ListGroup.Item>
                 <ListGroup.Item>Attack: 0</ListGroup.Item>
                 <ListGroup.Item>Defense: 50</ListGroup.Item>
                 <ListGroup.Item>Speed: -10</ListGroup.Item>

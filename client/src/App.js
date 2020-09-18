@@ -30,38 +30,53 @@ function App() {
 
     })
   // function buyPotion(name, quantity) {
+  // //   console.log("hit buy potion");
+  // //   console.log(quantity);
+  // // //   // const newQuantity = developerContext[name] + quantity;
+  // setDeveloperContext({ ...developerContext, [name]: quantity });
+  // // //   // function updateAttack(quantity){
+  // // //   //   console.log("update attack");
+  // // //   //   const newAttack= developerContext.attack + quantity;
+  // // //   //   setDeveloperContext({...developerContext, attack: newAttack })
+  // // //   // }
+  // // // }
+  // console.log("appjs");
+  // console.log(developerContext);
+
+  // function buyPotion(name,quantity){
   //   console.log("hit buy potion");
   //   console.log(quantity);
-  //   // const newQuantity = developerContext[name] + quantity;
-  //   setDeveloperContext({ ...developerContext, [name]: quantity });
-  //   // function updateAttack(quantity){
-  //   //   console.log("update attack");
-  //   //   const newAttack= developerContext.attack + quantity;
-  //   //   setDeveloperContext({...developerContext, attack: newAttack })
-  //   // }
+  //   setDeveloperContext({...developerContext[name]+ quantity});
   // }
-  console.log("appjs");
-  console.log(developerContext);
 
   useEffect(
     // console.log(developerContext);
     function () {
       console.log("useeffect");
-      // const userdata = API.getStat();
+      let userdata;
+       API.getStat().then((data)=>{
+         userdata=data
+         console.log(data);
+         if (data) {
+          setDeveloperContext({
+            ...developerContext, attackcontext: userdata.attack, defensecontext: userdata.defense,
+            gilcontext: userdata.gil, hpcontext: userdata.hp, potioncontext:userdata.potion
+          })
+        }
+       })
+       .catch((err)=>{
+         console.log(err);
+       });
+     
       // const useritem= API.getItem();
-      const userdata= {gil: 400,
-        hp: 30,
-        attack: 40,
-        defense: 50,
-        speed: 5,
-        potion: 1,}
+      // const userdata= {gil: 500,
+      //   hp: 30,
+      //   attack: 40,
+      //   defense: 50,
+      //   speed: 5,
+      //   potion: 1,}
       
-      if (userdata) {
-        setDeveloperContext({
-          ...developerContext, attackcontext: userdata.attack, defensecontext: userdata.defense,
-          gilcontext: userdata.gil, hpcontext: userdata.hp, potioncontext:userdata.potion
-        })
-      }
+      
     },[]
   )
   return (

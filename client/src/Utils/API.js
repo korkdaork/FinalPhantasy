@@ -24,8 +24,8 @@ export default {
     return axios.get("/api/stats");
   },
   // Gets the book with the given id
-  getStat: function (id) {
-    return axios.get("/api/stats/" + id);
+  getStat: function () {
+    return axios.get("/api/stats/");
     // return JSON.parse(localStorage.getItem("userstats"));
   },
   // Deletes the book with the given id
