@@ -243,7 +243,7 @@ function Stores() {
         }
       </Jumbotron>
       <CardGroup>
-        <Card>
+        <Card className="item-card">
           <div className="item-background">
             <Card.Img variant="top" class="bounce" src={sword} />
             </div>
@@ -251,10 +251,10 @@ function Stores() {
             <Card.Title id="sword">Sword </Card.Title>
             <Card.Text>
               <ListGroup>
-                <ListGroup.Item>Attack: 25</ListGroup.Item>
-                <ListGroup.Item>Defense: 10</ListGroup.Item>
-                <ListGroup.Item>Speed: 5</ListGroup.Item>
-                <ListGroup.Item>Gil: 30</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Attack: 25</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Defense: 10</ListGroup.Item>
+                <ListGroup.Item className="item-stat" > Speed: 5</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Gil: 30</ListGroup.Item>
               </ListGroup>
             </Card.Text>
           </Card.Body>
@@ -265,7 +265,7 @@ function Stores() {
               id="buy" variant="primary">Buy</Button>{' '}
           </Card.Footer>
         </Card>
-        <Card>
+        <Card className="item-card">
         <div className="item-background">
           <Card.Img variant="top" class="bounce" src={axe} />
           </div>
@@ -273,10 +273,10 @@ function Stores() {
             <Card.Title id="axe" >Axe </Card.Title>
             <Card.Text>
               <ListGroup>
-                <ListGroup.Item>Attack: 35</ListGroup.Item>
-                <ListGroup.Item>Defense: 8</ListGroup.Item>
-                <ListGroup.Item>Speed: 3</ListGroup.Item>
-                <ListGroup.Item>Gil: 50</ListGroup.Item>
+                <ListGroup.Item className="item-stat" v>Attack: 35</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Defense: 8</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Speed: 3</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Gil: 50</ListGroup.Item>
               </ListGroup>
             </Card.Text>
           </Card.Body>
@@ -287,7 +287,7 @@ function Stores() {
               id="buy" variant="primary">Buy</Button>{' '}
           </Card.Footer>
         </Card>
-        <Card>
+        <Card className="item-card">
         <div className="item-background">
           <Card.Img variant="top" class="bounce" src={hammer} />
           </div>
@@ -295,10 +295,10 @@ function Stores() {
             <Card.Title id="hammer">Mace </Card.Title>
             <Card.Text>
               <ListGroup>
-                <ListGroup.Item>Attack: 45</ListGroup.Item>
-                <ListGroup.Item>Defense: 5</ListGroup.Item>
-                <ListGroup.Item>Speed: 2</ListGroup.Item>
-                <ListGroup.Item>Gil: 75</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Attack: 45</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Defense: 5</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Speed: 2</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Gil: 75</ListGroup.Item>
               </ListGroup>
             </Card.Text>
           </Card.Body>
@@ -308,7 +308,7 @@ function Stores() {
               onClick={handleButtonCPressed}
               id="buy" variant="primary">Buy</Button>{' '}</Card.Footer>
         </Card>
-        <Card>
+        <Card className="item-card">
         <div className="item-background">
           <Card.Img variant="top" class="bounce" src={health} />
           </div>
@@ -316,8 +316,8 @@ function Stores() {
             <Card.Title id="potion">Potion </Card.Title>
             <Card.Text>
               <ListGroup>
-                <ListGroup.Item>HP+: 50</ListGroup.Item>
-                <ListGroup.Item>Gil: 50</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >HP+: 50</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Gil: 50</ListGroup.Item>
               </ListGroup>
             </Card.Text>
           </Card.Body>
@@ -327,7 +327,7 @@ function Stores() {
               onClick={handleButtonDPressed}
               id="buy" variant="primary">Buy</Button>{' '}</Card.Footer>
         </Card>
-        <Card>
+        <Card className="item-card">
         <div className="item-background">
           <Card.Img variant="top" class="bounce" src={light} />
           </div>
@@ -335,11 +335,11 @@ function Stores() {
             <Card.Title id="light">Light Armor </Card.Title>
             <Card.Text>
               <ListGroup>
-                <ListGroup.Item>HP: 80</ListGroup.Item>
-                <ListGroup.Item>Attack: 0</ListGroup.Item>
-                <ListGroup.Item>Defense: 20</ListGroup.Item>
-                <ListGroup.Item>Speed: -3</ListGroup.Item>
-                <ListGroup.Item>Gil: 150</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >HP: 80</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Attack: 0</ListGroup.Item>
+                <ListGroup.Item className="item-stat" v>Defense: 20</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Speed: -3</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Gil: 150</ListGroup.Item>
               </ListGroup>
             </Card.Text>
           </Card.Body>
@@ -349,7 +349,7 @@ function Stores() {
               onClick={handleButtonEPressed}
               id="buy" variant="primary">Buy</Button>{' '}</Card.Footer>
         </Card>
-        <Card>
+        <Card className="item-card">
         <div className="item-background">
           <Card.Img variant="top" class="bounce" src={heavy} />
           </div>
@@ -357,11 +357,11 @@ function Stores() {
             <Card.Title id="heavy">Heavy Armor </Card.Title>
             <Card.Text>
               <ListGroup>
-                <ListGroup.Item>HP: 70</ListGroup.Item>
-                <ListGroup.Item>Attack: 0</ListGroup.Item>
-                <ListGroup.Item>Defense: 50</ListGroup.Item>
-                <ListGroup.Item>Speed: -10</ListGroup.Item>
-                <ListGroup.Item>Gil: 200</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >HP: 70</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Attack: 0</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Defense: 50</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Speed: -10</ListGroup.Item>
+                <ListGroup.Item className="item-stat" >Gil: 200</ListGroup.Item>
               </ListGroup>
             </Card.Text>
           </Card.Body>
