@@ -53,8 +53,8 @@ function Signups(props) {
 
 
     return (
-        <div class="container-fluid">
-        <Form onSubmit={handleFormSubmit} id="signup-form">
+        
+        <Form onSubmit={handleFormSubmit} id="signup-form" class="container-fluid">
             <form-row>
                 <form-col>
                     <Form.Control className="form-name" placeholder="First name" onChange={handleInputChange} name="firstName" />
@@ -80,7 +80,7 @@ function Signups(props) {
             <Button id="submit-button" type="submit">Submit</Button>
 
         </Form>
-        </div>
+        
     );
 }
 export default Signups;
