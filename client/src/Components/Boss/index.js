@@ -123,7 +123,7 @@ function BossCards() {
     };
     // ============================= REACT CARDS AND PAGE =====================================
     return (
-        <Container-fluid>
+        <div class="container-fluid">
             <Jumbotron>
                 <h2>Your adventure leads you to the Boss Fight!</h2>
             </Jumbotron>
@@ -200,7 +200,7 @@ function BossCards() {
             </Row>
 
 
-        </Container-fluid>
+        </div>
     );
 }
 

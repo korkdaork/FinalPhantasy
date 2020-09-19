@@ -193,7 +193,7 @@ function Stage1Cards() {
 
     // ============================= REACT CARDS AND PAGE =====================================
     return (
-        <Container-fluid>
+        <div className="container-fluid">
             <Jumbotron>
                 <h2>Your adventure leads you to Stage One!</h2>
             </Jumbotron>
@@ -202,7 +202,7 @@ function Stage1Cards() {
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="player">
                             
-                            <Card.Img class="sprite_card" id="player_image" variant="top" src={player} />
+                            <Card.Img class="sprite_card" variant="top" src={player} />
                             <Card.Body>
                                 <Card.Title><b>{userStats && userStats.name}</b></Card.Title>
                                 <Card.Text>
@@ -252,7 +252,7 @@ function Stage1Cards() {
                 <Col sm={4} md={3}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="enemy">
-                            <Card.Img class="sprite_card" id="monster_image" variant="top" src={monsterStats.image} />
+                            <Card.Img class="sprite_card" variant="top" src={monsterStats.image} />
                             <Card.Body>
                                 <Card.Title>{monsterStats.name}</Card.Title>
                                 <Card.Text>
@@ -274,7 +274,7 @@ function Stage1Cards() {
             </Row>
 
 
-        </Container-fluid>
+        </div>
     );
 }
 

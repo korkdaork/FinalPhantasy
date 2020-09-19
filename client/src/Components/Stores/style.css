@@ -1,3 +1,12 @@
+.jumbotron {
+  margin-bottom: 0px;
+}
+
+.card {
+  border-color: black;
+  border-width: 2px;
+}
+
 .card-footer {
   background-image: linear-gradient(
       rgba(29, 23, 116, 0.9),
@@ -49,4 +58,34 @@
     0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
     0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
     0 20px 20px rgba(0, 0, 0, 0.15);
+}
+
+.item-background {
+  background-image: linear-gradient(
+    rgba(29, 23, 116, 0.5),
+      rgba(63, 25, 25, 0.9)
+    ), url("../../Assets/wood.png");
+  background-size: cover;
+  object-fit: contain;
+}
+
+.bounce {
+  object-fit: cover;
+  height: auto;
+  width: 100%;
+  
+}
+
+.bounce:hover {
+  animation-name: bounces;
+  animation-timing-function: ease;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounces {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-20px); }
+  90%  { transform: translateY(0); }
+  100% { transform: translateY(0); }
 }
