@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import API from "../../Utils/API";
 import "./style.css";
 
-function Signups() {
+function Signups(props) {
 
     const [newUser, setNewUser] = useState({ firstName: "", lastName: "", email: "", password: "", confirmPassword: "" });
 
@@ -29,16 +29,20 @@ function Signups() {
     // likely to be in the signup than login
     function handleFormSubmit(event) {
         event.preventDefault();
-        console.log(newUser)
+        // console.log(newUser)
         // if (formObject.title && formObject.author) {
         API.saveUser(
             newUser //not making a new object so {} is not necessary
 
         )
             .then(res => {
-                console.log(res.data)
+                // console.log("user data in signup")
+                // console.log(res.data)
+                localStorage.setItem("id", res.data._id)
+                localStorage.setItem("firstName", res.data.firstName);
+                localStorage.setItem("lastName", res.data.lastName);
                 if (res.data) {
-                    window.location = "/main"
+                    window.location= "/main"
                 } else {
                     alert("Invalid Login")
                 }

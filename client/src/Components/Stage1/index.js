@@ -117,7 +117,10 @@ function Stage1Cards() {
     console.log(userStats)
     useEffect(() => {
         const userId = localStorage.getItem("id");
+        
         API.getStat(userId).then(res => {
+            console.log("get stat on stage1")
+            console.log(res.data)
             setUserStats(res.data)
             console.log(res)
         });
