@@ -131,7 +131,7 @@ function BossCards() {
                 <Col xs={6} md={4}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="player">
-                            <Card.Img variant="top" src={player} />
+                            <Card.Img class="sprite_card" variant="top" src={player} />
                             <Card.Body>
                                 <Card.Title><b>{userStats && userStats.name}</b></Card.Title>
                                 <Card.Text>
@@ -178,7 +178,7 @@ function BossCards() {
                 <Col xs={6} md={4}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="enemy">
-                            <Card.Img variant="top" src={monsterStats.image} />
+                            <Card.Img class="sprite_card" variant="top" src={monsterStats.image} />
                             <Card.Body>
                                 <Card.Title>{monsterStats.name}</Card.Title>
                                 <Card.Text>

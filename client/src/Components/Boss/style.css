@@ -75,3 +75,9 @@ button {
                0 10px 10px rgba(0,0,0,.2),
                0 20px 20px rgba(0,0,0,.15);
 }
+
+.sprite_card {
+  background-image: url("../../Assets/card_background_forest_2x.png");
+  background-size: cover;
+  object-fit: contain;
+}

@@ -83,7 +83,7 @@ button {
 }
 
 .sprite_card {
-  background-image: url("../../Assets/card_background_forest.png");
+  background-image: url("../../Assets/card_background_forest_2x.png");
   background-size: cover;
   object-fit: contain;
 }
