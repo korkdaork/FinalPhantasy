@@ -44,9 +44,8 @@ module.exports = {
   },
   findStatsByUserId: function (req, res) {
     console.log(req.user)
-    console.log(req.params)
     db.Stats
-      .findOne({ userId: req.params.userId })
+      .findOne({ userId: req.user._id })
       .then(dbModel => { console.log(dbModel); res.json(dbModel) })
       .catch(err => res.status(422).json(err));
   },
@@ -62,10 +61,10 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   updateStats: function (req, res) {
-    // console.log(req.params.id)
-    // console.log(req.body)
+    console.log(req.params.id)
+    console.log(req.body)
     db.Stats
-      .findOneAndUpdate({ userId: req.params.userId }, req.body, { new: true, upsert: true })
+      .findOneAndUpdate({ userId: req.user._id }, req.body, { new: true, upsert: true })
       .then(dbModel => { console.log(dbModel); res.json(dbModel) })
       .catch(err => res.status(422).json(err));
   },
@@ -98,19 +97,17 @@ module.exports = {
         db.Stats
           .create({
             gil: 500,
-            hp: 0,
-            attack: 0,
-            defense: 0,
-            speed: 0,
-            potion: 0,
+            hp: 30,
+            attack: 40,
+            defense: 50,
+            speed: 5,
+            potion: 1,
             userId: user._id
           }
           )
           .then(() => {
-            console.log( "here's the user", user)
-            res.status(200).json(user);
-            
-            
+            console.log(req.body, "here's the req")
+            res.status(200);
           })
           .catch(err => res.status(422).json(err));
 

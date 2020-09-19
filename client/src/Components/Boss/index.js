@@ -23,7 +23,7 @@ function BossCards() {
             attack: 9999,
             defense: 9999,
             gil: 9999,
-            intro: "Sephiroth is the strongest SOLDIER there is. He stands in front of you - your luck has run out... you should have prayed that you didn't cross his path.",
+            intro: "Sephiroth is the strongest SOLDIER there is. He stands in front of you - you luck has run out... you should have prayed that you didn't cross his path.",
             image: sephiroth
         }
     ]
