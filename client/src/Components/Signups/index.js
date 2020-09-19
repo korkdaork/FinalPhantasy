@@ -53,13 +53,14 @@ function Signups(props) {
 
 
     return (
-        <Form onSubmit={handleFormSubmit}>
+        <div class="container-fluid">
+        <Form onSubmit={handleFormSubmit} id="signup-form">
             <form-row>
                 <form-col>
-                    <Form.Control placeholder="First name" onChange={handleInputChange} name="firstName" />
+                    <Form.Control className="form-name" placeholder="First name" onChange={handleInputChange} name="firstName" />
                 </form-col>
                 <form-col>
-                    <Form.Control placeholder="Last name" onChange={handleInputChange} name="lastName" />
+                    <Form.Control className="form-name" placeholder="Last name" onChange={handleInputChange} name="lastName" />
                 </form-col>
             </form-row>
             <Form.Group controlId="formBasicEmail">
@@ -76,9 +77,10 @@ function Signups(props) {
                 <Form.Label>Re-Enter Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" onChange={handleInputChange} name="confirmPassword" />
             </Form.Group>
-            <Button type="submit">Submit</Button>
+            <Button id="submit-button" type="submit">Submit</Button>
 
         </Form>
+        </div>
     );
 }
 export default Signups;
