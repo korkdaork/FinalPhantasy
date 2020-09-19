@@ -15,6 +15,12 @@ import player from "../../Assets/knight.gif"
 import orc from "../../Assets/orc.gif"
 import slime from "../../Assets/slime.gif"
 import chocobo from "../../Assets/chocobo.gif"
+import yevzilla from "../../Assets/yevzilla.gif"
+import bialalama from "../../Assets/biala-lama.gif"
+import himadrigotica from "../../Assets/himadrigotica.gif"
+import garretpooficus from "../../Assets/garretpooficus.gif"
+import kaiwhywhywhy from "../../Assets/kaiwhywhywhy.gif"
+
 
 
 function Stage1Cards() {
@@ -55,7 +61,7 @@ function Stage1Cards() {
             defense: 5,
             gil: 200,
             intro: "Yevzilla rises out of the ocean! Someone woke him from his slumber! If not defeated quickly, his lazer breath will destroy ALL!",
-            image: chocobo
+            image: yevzilla
         },
         {
             name: "Biala-lama",
@@ -64,7 +70,7 @@ function Stage1Cards() {
             defense: 35,
             gil: 200,
             intro: "Biala-lama nears! Watch out for the elbows and knees of this creature - they are muaitastic!",
-            image: chocobo
+            image: bialalama
         },
         {
             name: "Himadrigotica",
@@ -73,7 +79,7 @@ function Stage1Cards() {
             defense: 20,
             gil: 45,
             intro: "Himadrigotica is a unique species of a goat that can only be found in the Dark Forest and on Mount Kararak.  It has a nasty kick and an even nastier meeehhh-nsult!",
-            image: chocobo
+            image: himadrigotica
         },
         {
             name: "Garretpooficus",
@@ -82,7 +88,7 @@ function Stage1Cards() {
             defense: 25,
             gil: 200,
             intro: "Not much is know about this creature except that it waits for its victims and then throws insults at them",
-            image: chocobo
+            image: garretpooficus
         },
         {
             name: "Kaiwhywhywhy",
@@ -91,7 +97,7 @@ function Stage1Cards() {
             defense: 30,
             gil: 200,
             intro: "This creature will defeat you with its WHY WHY WHY attack!",
-            image: chocobo
+            image: kaiwhywhywhy
         }
     ]
 
@@ -116,10 +122,7 @@ function Stage1Cards() {
     console.log(userStats)
     useEffect(() => {
         const userId = localStorage.getItem("id");
-        
         API.getStat(userId).then(res => {
-            console.log("get stat on stage1")
-            console.log(res.data)
             setUserStats(res.data)
             console.log(res)
         });
@@ -190,7 +193,7 @@ function Stage1Cards() {
 
     // ============================= REACT CARDS AND PAGE =====================================
     return (
-        <Container-fluid>
+        <div className="container-fluid">
             <Jumbotron>
                 <h2>Your adventure leads you to Stage One!</h2>
             </Jumbotron>
@@ -198,7 +201,8 @@ function Stage1Cards() {
                 <Col sm={4} md={3}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="player">
-                            <Card.Img variant="top" src={player} />
+                            
+                            <Card.Img class="sprite_card" variant="top" src={player} />
                             <Card.Body>
                                 <Card.Title><b>{userStats && userStats.name}</b></Card.Title>
                                 <Card.Text>
@@ -248,7 +252,7 @@ function Stage1Cards() {
                 <Col sm={4} md={3}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="enemy">
-                            <Card.Img variant="top" src={monsterStats.image} />
+                            <Card.Img class="sprite_card" variant="top" src={monsterStats.image} />
                             <Card.Body>
                                 <Card.Title>{monsterStats.name}</Card.Title>
                                 <Card.Text>
@@ -270,7 +274,7 @@ function Stage1Cards() {
             </Row>
 
 
-        </Container-fluid>
+        </div>
     );
 }
 

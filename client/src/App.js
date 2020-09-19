@@ -25,15 +25,10 @@ function App() {
 
       buyPotion: (name, quantity)=>{
         setDeveloperContext({ ...developerContext, [name]: quantity });
-      
 
-      },
-      setInitialState:(name, quantity)=>{
-        setDeveloperContext({ ...developerContext, [name]: quantity });
-        
-        
+      }
 
-    },})
+    })
   // function buyPotion(name, quantity) {
   // //   console.log("hit buy potion");
   // //   console.log(quantity);
@@ -57,9 +52,9 @@ function App() {
   useEffect(
     // console.log(developerContext);
     function () {
+      console.log("useeffect");
       let userdata;
-      const userId = localStorage.getItem("id");
-       API.getStat(userId).then((data)=>{
+       API.getStat().then((data)=>{
          userdata=data.data
          console.log("user data");
          console.log(data);
@@ -83,7 +78,7 @@ function App() {
       //   potion: 1,}
       
       
-    },[localStorage.getItem("id")]
+    },[]
   )
   return (
     <DeveloperContext.Provider value={developerContext}>

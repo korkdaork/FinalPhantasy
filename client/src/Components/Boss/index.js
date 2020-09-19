@@ -23,7 +23,7 @@ function BossCards() {
             attack: 9999,
             defense: 9999,
             gil: 9999,
-            intro: "Sephiroth is the strongest SOLDIER there is. He stands in front of you - your luck has run out... you should have prayed that you didn't cross his path.",
+            intro: "Sephiroth is the strongest SOLDIER there is. He stands in front of you - you luck has run out... you should have prayed that you didn't cross his path.",
             image: sephiroth
         }
     ]
@@ -123,7 +123,7 @@ function BossCards() {
     };
     // ============================= REACT CARDS AND PAGE =====================================
     return (
-        <Container-fluid>
+        <div class="container-fluid">
             <Jumbotron>
                 <h2>Your adventure leads you to the Boss Fight!</h2>
             </Jumbotron>
@@ -131,7 +131,7 @@ function BossCards() {
                 <Col xs={6} md={4}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="player">
-                            <Card.Img variant="top" src={player} />
+                            <Card.Img class="sprite_card" variant="top" src={player} />
                             <Card.Body>
                                 <Card.Title><b>{userStats && userStats.name}</b></Card.Title>
                                 <Card.Text>
@@ -178,7 +178,7 @@ function BossCards() {
                 <Col xs={6} md={4}>
                     <CardGroup>
                         <Card style={{ width: '18rem' }} className="enemy">
-                            <Card.Img variant="top" src={monsterStats.image} />
+                            <Card.Img class="sprite_card" variant="top" src={monsterStats.image} />
                             <Card.Body>
                                 <Card.Title>{monsterStats.name}</Card.Title>
                                 <Card.Text>
@@ -200,7 +200,7 @@ function BossCards() {
             </Row>
 
 
-        </Container-fluid>
+        </div>
     );
 }
 

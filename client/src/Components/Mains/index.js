@@ -6,6 +6,7 @@ import "./style.css";
 function Mains() {
     const fullName = localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")
     return (
+        <div className="container-fluid">
         <Jumbotron>
             <h1>Final Phantasy</h1>
             <p>
@@ -18,6 +19,7 @@ function Mains() {
                 <Button href="/store">Begin Adventure</Button>
             </p>
         </Jumbotron>
+        </div>
     );
 }
 
